@@ -81,13 +81,14 @@ Spins up a local web server to preview the generated `dist/` production output.
 
 ## Deployment Status
 
-* **Target Platform:** Cloudflare Pages Free
-* **Current Status:** **NOT DEPLOYED YET** (Repository published to GitHub; hosting deployment pending final configuration)
+* **Platform:** Cloudflare Pages Free
+* **Status:** **LIVE** ([jose-montejo-portfolio.pages.dev](https://jose-montejo-portfolio.pages.dev/))
+* **Production Branch:** `main`
 * **Build Configuration:**
-  * Framework preset: `Vite` (or None)
+  * Framework preset: `Vite`
   * Build command: `npm run build`
   * Build output directory: `dist`
-  * Environment variable: `NODE_VERSION: 20`
+  * Automatic deployments: Enabled for pushes to `main`
   * Edge Security: Security headers and Content Security Policy are served via [`public/_headers`](public/_headers).
 
 ---
