@@ -32,6 +32,7 @@
         <nav class="primary-nav" aria-label="Case study navigation">
           <a href="../index.html#work">All work</a>
           <a href="#overview">Overview</a>
+          <a href="#screenshots">Showcase</a>
           <a href="#architecture">Architecture</a>
           <a href="#decisions">Decisions</a>
           <a href="#verification">Verification</a>
@@ -92,9 +93,49 @@
       </div>
     </section>
 
+    <section class="case-section showcase-section" id="screenshots" aria-labelledby="screenshots-title">
+      <div class="layout showcase-header">
+        <div class="case-section-label"><span>02</span> / ARTIFACTS</div>
+        <div class="case-section-content">
+          <h2 id="screenshots-title">Verified Execution &amp; Test Captures</h2>
+          <p>Authentic terminal capture from WSL Ubuntu showing 100% passing automated test coverage, alongside an illustrative synthetic data demonstration of pipeline normalization.</p>
+        </div>
+      </div>
+
+      <div class="gallery-breakout">
+        <div class="screenshot-grid-2">
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: AI Job Search automated pytest test suite results">
+                <img src="../assets/ai-job-search/ai-job-search-pytest-verification.png" alt="Genuine terminal execution of pytest demonstrating 18 passed tests in 0.09s covering API fault tolerance, normalization, role aliases, and preference filtering" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>01 / Automated Pytest Suite (18/18 Passed in 0.09s)</strong>
+              Genuine test suite execution running in an isolated Python 3.14 WSL environment. Validates HTTP error recovery, regex extraction, role expansions, and multi-criteria business filtering across 18 passing tests.
+            </figcaption>
+          </figure>
+
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: AI Job Search pipeline normalization and deterministic filtering illustrative walkthrough (Synthetic data demonstration)">
+                <img src="../assets/ai-job-search/ai-job-search-cli-pipeline.png" alt="Illustrative synthetic fixture walkthrough showing simulated job ingestion, Job dataclass normalization, and deterministic filtering by role alias and arrangement" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>02 / Ingestion &amp; Normalization Pipeline (Synthetic Data Walkthrough)</strong>
+              Illustrative synthetic fixture walkthrough demonstrating the four-stage data flow: simulated vendor payload ingestion, strongly-typed <code>Job</code> dataclass normalization, and deterministic preference filtering across location and work arrangement.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="case-section architecture-section" id="architecture" aria-labelledby="architecture-title">
       <div class="layout case-section-grid">
-        <div class="case-section-label"><span>02</span> / ARCHITECTURE</div>
+        <div class="case-section-label"><span>03</span> / ARCHITECTURE</div>
         <div class="case-section-content">
           <h2 id="architecture-title">Modular four-stage pipeline with strict separation of concerns.</h2>
           <p>The application follows a linear, decoupled architecture where each stage has a single, well-defined responsibility. Network communication is isolated at the edge, data is normalized into structured domain models, and filtering operates purely on clean domain instances.</p>
@@ -123,7 +164,7 @@
     </section>
 
     <section class="case-section layout" id="decisions" aria-labelledby="decisions-title">
-      <div class="case-section-label"><span>03</span> / KEY DECISIONS</div>
+      <div class="case-section-label"><span>04</span> / KEY DECISIONS</div>
       <div class="case-section-content">
         <h2 id="decisions-title">Design choices that keep the pipeline clean and extensible.</h2>
         <p>V1 was architected with clean separation of concerns, ensuring that modifying data sources, expanding filter rules, or altering output formats does not require rewrites across the application.</p>
@@ -154,7 +195,7 @@
 
     <section class="case-section verification-section" id="verification" aria-labelledby="verification-title">
       <div class="layout case-section-grid">
-        <div class="case-section-label"><span>04</span> / VERIFICATION</div>
+        <div class="case-section-label"><span>05</span> / VERIFICATION</div>
         <div class="case-section-content">
           <h2 id="verification-title">18 verified automated tests with simulated failure handling.</h2>
           <p>Because reliability is paramount when automating job searches, the codebase is backed by an automated <code>pytest</code> suite covering network failure resilience, regex extraction accuracy, role alias lookups, and preference permutations.</p>
@@ -200,7 +241,7 @@
     </section>
 
     <section class="case-section layout" id="roadmap" aria-labelledby="roadmap-title">
-      <div class="case-section-label"><span>05</span> / ROADMAP</div>
+      <div class="case-section-label"><span>06</span> / ROADMAP</div>
       <div class="case-section-content">
         <h2 id="roadmap-title">Potential future directions and exploratory ideas.</h2>
         <p class="case-big-copy">V1 established the data collection, normalization, and filtering baseline. Future exploration may investigate potential enhancements as non-committed research directions.</p>
@@ -230,7 +271,7 @@
     </section>
 
     <section class="case-section layout" aria-labelledby="lessons-title">
-      <div class="case-section-label"><span>06</span> / TAKEAWAY</div>
+      <div class="case-section-label"><span>07</span> / TAKEAWAY</div>
       <div class="case-section-content">
         <h2 id="lessons-title">What building a production-style data pipeline taught me.</h2>
         <p class="case-big-copy">Reliable software begins with disciplined data modeling and clean separation of concerns before adding complex features.</p>
@@ -246,5 +287,168 @@
     <nav class="case-next" aria-label="Back to project list"><div class="layout case-next-inner"><a href="../index.html#work">← Back to all featured projects</a></div></nav>
   </main>
   <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript.</span><div class="footer-links"><a class="footer-privacy-link" href="../privacy.html">Privacy</a><a href="../index.html#home">Back to home ↑</a></div></div></footer>
+  <div class="image-viewer" id="image-viewer" role="dialog" aria-modal="true" aria-label="Expanded image viewer" tabindex="-1">
+    <div class="viewer-backdrop" id="viewer-backdrop" aria-label="Close zoomed view"></div>
+    <div class="viewer-stage" id="viewer-stage">
+      <img class="viewer-image" id="viewer-image" src="" alt="">
+    </div>
+    <button type="button" class="viewer-sr-close" id="viewer-sr-close">Close zoom viewer</button>
+  </div>
+
+  <script>
+    (() => {
+      const triggers = document.querySelectorAll('.screenshot-trigger');
+      const viewer = document.getElementById('image-viewer');
+      const backdrop = document.getElementById('viewer-backdrop');
+      const stage = document.getElementById('viewer-stage');
+      const img = document.getElementById('viewer-image');
+      const srClose = document.getElementById('viewer-sr-close');
+
+      if (!viewer || !img) return;
+
+      let isOpen = false;
+      let lastFocused = null;
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let startTx = 0;
+      let startTy = 0;
+
+      function clampPan() {
+        if (scale <= 1) {
+          translateX = 0;
+          translateY = 0;
+          return;
+        }
+        const imgWidth = img.offsetWidth * scale;
+        const imgHeight = img.offsetHeight * scale;
+        const maxPanX = Math.max(0, (imgWidth - window.innerWidth) / 2 + 60);
+        const maxPanY = Math.max(0, (imgHeight - window.innerHeight) / 2 + 60);
+        translateX = Math.max(-maxPanX, Math.min(maxPanX, translateX));
+        translateY = Math.max(-maxPanY, Math.min(maxPanY, translateY));
+      }
+
+      function updateTransform(smooth = false) {
+        if (smooth) {
+          img.style.transition = 'transform 0.16s cubic-bezier(0.2, 0, 0.2, 1)';
+        } else {
+          img.style.transition = 'none';
+        }
+        img.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+        if (scale > 1) {
+          img.classList.add('is-zoomed');
+        } else {
+          img.classList.remove('is-zoomed');
+        }
+      }
+
+      function resetZoom(smooth = false) {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform(smooth);
+      }
+
+      function openViewer(thumbnailBtn) {
+        lastFocused = thumbnailBtn;
+        const thumbImg = thumbnailBtn.querySelector('img');
+        if (!thumbImg) return;
+        img.src = thumbImg.src;
+        img.alt = thumbImg.alt;
+        isOpen = true;
+        resetZoom(false);
+        viewer.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        viewer.focus();
+      }
+
+      function closeViewer() {
+        if (!isOpen) return;
+        isOpen = false;
+        viewer.classList.remove('is-open');
+        document.body.style.overflow = '';
+        img.src = '';
+        img.alt = '';
+        if (lastFocused) lastFocused.focus();
+      }
+
+      triggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openViewer(btn);
+        });
+      });
+
+      backdrop.addEventListener('click', closeViewer);
+      srClose.addEventListener('click', closeViewer);
+      stage.addEventListener('click', (e) => {
+        if (e.target === stage) closeViewer();
+      });
+
+      img.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        if (scale > 1) {
+          resetZoom(true);
+        } else {
+          const rect = img.getBoundingClientRect();
+          const clickX = e.clientX - (rect.left + rect.width / 2);
+          const clickY = e.clientY - (rect.top + rect.height / 2);
+          scale = 2.2;
+          translateX = -clickX * (scale - 1);
+          translateY = -clickY * (scale - 1);
+          clampPan();
+          updateTransform(true);
+        }
+      });
+
+      stage.addEventListener('wheel', (e) => {
+        if (!isOpen) return;
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.25 : 0.8;
+        const newScale = Math.min(Math.max(1, scale * factor), 4.5);
+        if (newScale === 1) {
+          resetZoom(true);
+          return;
+        }
+        scale = newScale;
+        clampPan();
+        updateTransform(true);
+      }, { passive: false });
+
+      img.addEventListener('mousedown', (e) => {
+        if (!isOpen || scale <= 1) return;
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startTx = translateX;
+        startTy = translateY;
+        img.classList.add('is-dragging');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isOpen || !isDragging) return;
+        translateX = startTx + (e.clientX - startX);
+        translateY = startTy + (e.clientY - startY);
+        clampPan();
+        updateTransform(false);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          img.classList.remove('is-dragging');
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (!isOpen) return;
+        if (e.key === 'Escape') closeViewer();
+      });
+    })();
+  </script>
 </body>
 </html>

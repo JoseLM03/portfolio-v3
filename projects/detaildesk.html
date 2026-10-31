@@ -32,6 +32,7 @@
         <nav class="primary-nav" aria-label="Case study navigation">
           <a href="../index.html#work">All work</a>
           <a href="#overview">Overview</a>
+          <a href="#screenshots">Showcase</a>
           <a href="#contributions">Contributions</a>
           <a href="#architecture">Architecture</a>
           <a href="#features">Features</a>
@@ -91,8 +92,61 @@
       </div>
     </section>
 
+    <section class="case-section showcase-section" id="screenshots" aria-labelledby="screenshots-title">
+      <div class="layout showcase-header">
+        <div class="case-section-label"><span>02</span> / ARTIFACTS</div>
+        <div class="case-section-content">
+          <h2 id="screenshots-title">Prototype Interface Captures</h2>
+          <p>Authentic captures from the working prototype demonstrating the conversational receptionist, structured condition intake form, and live owner lead management dashboard.</p>
+        </div>
+      </div>
+
+      <div class="gallery-breakout">
+        <div class="screenshot-grid">
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: DetailDesk virtual receptionist conversation">
+                <img src="../assets/detaildesk/detaildesk-receptionist-chat.png" alt="Customer-facing virtual receptionist answering pricing questions with business-grounded rates and suggested chips" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>01 / Customer Virtual Receptionist</strong>
+              Interactive front-desk assistant answering customer inquiries 24/7 on package starting prices, business hours, and mobile service radius without making up off-menu quotes.
+            </figcaption>
+          </figure>
+
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: DetailDesk quote request intake form">
+                <img src="../assets/detaildesk/detaildesk-quote-request.png" alt="Vehicle quote request form showing contact inputs, vehicle details, condition ratings for pet hair and stains, and transparent pricing disclosure" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>02 / Structured Quote &amp; Condition Intake</strong>
+              Four-point condition rating assessment (pet hair, carpet stains, odor, paint condition) with vehicle photo upload, local date handling (PR #5), and transparent estimate disclaimers.
+            </figcaption>
+          </figure>
+
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: DetailDesk owner lead management dashboard">
+                <img src="../assets/detaildesk/detaildesk-owner-dashboard.png" alt="Owner lead management dashboard displaying lead status tabs, vehicle specs, customer contacts, and workflow transition controls" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>03 / Owner Lead Management Pipeline</strong>
+              Centralized dashboard tracking lead progression across New, Contacted, Booked, and Closed statuses with multi-field search (demonstrated filtering customer inquiries by local phone area code), status distribution metrics, and workflow transition controls.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="case-section layout" id="contributions" aria-labelledby="contributions-title">
-      <div class="case-section-label"><span>02</span> / MY CONTRIBUTIONS</div>
+      <div class="case-section-label"><span>03</span> / MY CONTRIBUTIONS</div>
       <div class="case-section-content">
         <h2 id="contributions-title">Frontend engineering, critical bug fixes, and testing.</h2>
         <p>DetailDesk is a team effort. Quincy developed the initial prototype specifications, core server routes, and mobile receptionist layout; Dominique implemented mobile navigation headers and collaborated on reviews. My contributions centered on frontend architecture, input validation, bug fixes, visual styling, and pull request reviews.</p>
@@ -126,7 +180,7 @@
 
     <section class="case-section architecture-section" id="architecture" aria-labelledby="architecture-title">
       <div class="layout case-section-grid">
-        <div class="case-section-label"><span>03</span> / ARCHITECTURE</div>
+        <div class="case-section-label"><span>04</span> / ARCHITECTURE</div>
         <div class="case-section-content">
           <h2 id="architecture-title">Decoupled full-stack architecture with zero-dependency SQLite.</h2>
           <p>The system pairs a lightweight React client with an Express API backend, using Node's native SQLite module for frictionless local persistence without complex database setup.</p>
@@ -155,7 +209,7 @@
     </section>
 
     <section class="case-section layout" id="features" aria-labelledby="features-title">
-      <div class="case-section-label"><span>04</span> / FEATURES</div>
+      <div class="case-section-label"><span>05</span> / FEATURES</div>
       <div class="case-section-content">
         <h2 id="features-title">What works in the prototype today.</h2>
         <div class="decision-grid">
@@ -185,7 +239,7 @@
 
     <section class="case-section verification-section" id="verification" aria-labelledby="verification-title">
       <div class="layout case-section-grid">
-        <div class="case-section-label"><span>05</span> / VERIFICATION</div>
+        <div class="case-section-label"><span>06</span> / VERIFICATION</div>
         <div class="case-section-content">
           <h2 id="verification-title">Tested components and verifiable results.</h2>
           <p>Because DetailDesk is an active project, code quality and bug fixes were verified with automated test suites before merging pull requests.</p>
@@ -221,7 +275,7 @@
     </section>
 
     <section class="case-section layout" id="roadmap" aria-labelledby="roadmap-title">
-      <div class="case-section-label"><span>06</span> / ROADMAP</div>
+      <div class="case-section-label"><span>07</span> / ROADMAP</div>
       <div class="case-section-content">
         <h2 id="roadmap-title">Active status and planned next steps.</h2>
         <p class="case-big-copy">The prototype proves the core customer-to-owner workflow. Future development will focus on production integrations and cloud infrastructure.</p>
@@ -251,7 +305,7 @@
     </section>
 
     <section class="case-section layout" aria-labelledby="lessons-title">
-      <div class="case-section-label"><span>07</span> / TAKEAWAY</div>
+      <div class="case-section-label"><span>08</span> / TAKEAWAY</div>
       <div class="case-section-content">
         <h2 id="lessons-title">What I learned collaborating on a full-stack product.</h2>
         <p class="case-big-copy">Building in a team environment highlighted the importance of clear branch hygiene, communicative PR reviews, and defensive frontend validation.</p>
@@ -267,5 +321,168 @@
     <nav class="case-next" aria-label="Back to project list"><div class="layout case-next-inner"><a href="../index.html#work">← Back to all featured projects</a></div></nav>
   </main>
   <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript.</span><div class="footer-links"><a class="footer-privacy-link" href="../privacy.html">Privacy</a><a href="../index.html#home">Back to home ↑</a></div></div></footer>
+  <div class="image-viewer" id="image-viewer" role="dialog" aria-modal="true" aria-label="Expanded image viewer" tabindex="-1">
+    <div class="viewer-backdrop" id="viewer-backdrop" aria-label="Close zoomed view"></div>
+    <div class="viewer-stage" id="viewer-stage">
+      <img class="viewer-image" id="viewer-image" src="" alt="">
+    </div>
+    <button type="button" class="viewer-sr-close" id="viewer-sr-close">Close zoom viewer</button>
+  </div>
+
+  <script>
+    (() => {
+      const triggers = document.querySelectorAll('.screenshot-trigger');
+      const viewer = document.getElementById('image-viewer');
+      const backdrop = document.getElementById('viewer-backdrop');
+      const stage = document.getElementById('viewer-stage');
+      const img = document.getElementById('viewer-image');
+      const srClose = document.getElementById('viewer-sr-close');
+
+      if (!viewer || !img) return;
+
+      let isOpen = false;
+      let lastFocused = null;
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let startTx = 0;
+      let startTy = 0;
+
+      function clampPan() {
+        if (scale <= 1) {
+          translateX = 0;
+          translateY = 0;
+          return;
+        }
+        const imgWidth = img.offsetWidth * scale;
+        const imgHeight = img.offsetHeight * scale;
+        const maxPanX = Math.max(0, (imgWidth - window.innerWidth) / 2 + 60);
+        const maxPanY = Math.max(0, (imgHeight - window.innerHeight) / 2 + 60);
+        translateX = Math.max(-maxPanX, Math.min(maxPanX, translateX));
+        translateY = Math.max(-maxPanY, Math.min(maxPanY, translateY));
+      }
+
+      function updateTransform(smooth = false) {
+        if (smooth) {
+          img.style.transition = 'transform 0.16s cubic-bezier(0.2, 0, 0.2, 1)';
+        } else {
+          img.style.transition = 'none';
+        }
+        img.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+        if (scale > 1) {
+          img.classList.add('is-zoomed');
+        } else {
+          img.classList.remove('is-zoomed');
+        }
+      }
+
+      function resetZoom(smooth = false) {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform(smooth);
+      }
+
+      function openViewer(thumbnailBtn) {
+        lastFocused = thumbnailBtn;
+        const thumbImg = thumbnailBtn.querySelector('img');
+        if (!thumbImg) return;
+        img.src = thumbImg.src;
+        img.alt = thumbImg.alt;
+        isOpen = true;
+        resetZoom(false);
+        viewer.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        viewer.focus();
+      }
+
+      function closeViewer() {
+        if (!isOpen) return;
+        isOpen = false;
+        viewer.classList.remove('is-open');
+        document.body.style.overflow = '';
+        img.src = '';
+        img.alt = '';
+        if (lastFocused) lastFocused.focus();
+      }
+
+      triggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openViewer(btn);
+        });
+      });
+
+      backdrop.addEventListener('click', closeViewer);
+      srClose.addEventListener('click', closeViewer);
+      stage.addEventListener('click', (e) => {
+        if (e.target === stage) closeViewer();
+      });
+
+      img.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        if (scale > 1) {
+          resetZoom(true);
+        } else {
+          const rect = img.getBoundingClientRect();
+          const clickX = e.clientX - (rect.left + rect.width / 2);
+          const clickY = e.clientY - (rect.top + rect.height / 2);
+          scale = 2.2;
+          translateX = -clickX * (scale - 1);
+          translateY = -clickY * (scale - 1);
+          clampPan();
+          updateTransform(true);
+        }
+      });
+
+      stage.addEventListener('wheel', (e) => {
+        if (!isOpen) return;
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.25 : 0.8;
+        const newScale = Math.min(Math.max(1, scale * factor), 4.5);
+        if (newScale === 1) {
+          resetZoom(true);
+          return;
+        }
+        scale = newScale;
+        clampPan();
+        updateTransform(true);
+      }, { passive: false });
+
+      img.addEventListener('mousedown', (e) => {
+        if (!isOpen || scale <= 1) return;
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startTx = translateX;
+        startTy = translateY;
+        img.classList.add('is-dragging');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isOpen || !isDragging) return;
+        translateX = startTx + (e.clientX - startX);
+        translateY = startTy + (e.clientY - startY);
+        clampPan();
+        updateTransform(false);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          img.classList.remove('is-dragging');
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (!isOpen) return;
+        if (e.key === 'Escape') closeViewer();
+      });
+    })();
+  </script>
 </body>
 </html>

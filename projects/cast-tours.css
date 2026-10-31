@@ -61,6 +61,12 @@
 .private-repo-note strong {
   color: var(--ink);
 }
+.live-instruction-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--subtext);
+  font-weight: 600;
+}
 
 /* Section 02 / Showcase Section: Header uses standard .layout, gallery uses wide breakout */
 .showcase-section {

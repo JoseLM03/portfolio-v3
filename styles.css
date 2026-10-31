@@ -105,6 +105,7 @@ a:focus-visible{outline:3px solid var(--orange);outline-offset:5px}
 .row-content .stack strong{color:var(--ink);margin-right:8px}
 .row-aside{display:flex;flex-direction:column;align-items:start;justify-content:space-between;gap:23px;padding-top:9px}
 .row-aside-links{display:flex;flex-direction:column;gap:10px;align-items:start}
+.live-demo-instruction{font-size:12px;line-height:1.4;color:var(--subtext);max-width:220px}
 .project-meta-label{font-size:13px;color:var(--subtext);font-weight:700;letter-spacing:.2px}
 .project-evidence{display:flex;flex-direction:column;gap:9px;color:#584839;font-size:14px;line-height:1.7}
 .aside-heading{font-size:13px;color:var(--orange)}
