@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1b1a">
+  <meta name="description" content="Privacy Notice for the software engineering portfolio of Jose Luis Montejo: connection data, local preferences, cookies, and contact information.">
+  <title>Privacy Notice — Jose Luis Montejo</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    // Dark is the default on first visit, regardless of device settings.
+    // A returning visitor's explicit choice takes precedence.
+    (() => {
+      let choice;
+      try { choice = localStorage.getItem('jose-portfolio-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = choice === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <div class="layout header-layout">
+      <a class="identity" href="index.html#home" aria-label="Jose Luis Montejo, return to homepage">
+        <span class="identity-mark">JM<span aria-hidden="true">.</span></span>
+        <span class="identity-name">Jose Luis Montejo<span class="identity-caption">SOFTWARE DEVELOPMENT</span></span>
+      </a>
+      <div class="header-actions">
+        <nav aria-label="Main navigation" class="primary-nav">
+          <a href="index.html#work">Work</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="resume.html">Résumé</a>
+          <a class="nav-external" href="https://www.linkedin.com/in/jose-montejo-89888b257/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a class="nav-external" href="https://github.com/JoseLM03" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="layout case-breadcrumb">
+      <a href="index.html">← Back to portfolio</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Privacy Notice</span>
+    </div>
+
+    <div class="layout privacy-page">
+      <section class="privacy-intro" aria-labelledby="privacy-heading">
+        <div class="hero-kicker"><span class="kicker-square" aria-hidden="true"></span> PRIVACY &amp; TRANSPARENCY</div>
+        <h1 id="privacy-heading">Privacy Notice<span class="period">.</span></h1>
+        <p class="privacy-subtitle">A concise and transparent explanation of technical connection data, client-side preferences, hosting infrastructure, and communications for this portfolio.</p>
+        <span class="privacy-meta">Effective: October 31, 2026</span>
+      </section>
+
+      <div class="privacy-content">
+        <section class="privacy-section">
+          <h2>1. Overview &amp; Site Purpose</h2>
+          <p>This website is the personal software engineering portfolio of Jose Luis Montejo. Its purpose is to present selected software projects, technical background, and engineering case studies. The site is published as a collection of static files without user accounts, forms, or monetization.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>2. Hosting Infrastructure &amp; Technical Connection Data</h2>
+          <p>This portfolio is hosted via Cloudflare Pages (operated by Cloudflare, Inc.). When you request pages, stylesheets, images, or documents from this site, Cloudflare's global edge network automatically processes technical connection data necessary to transmit the files to your device.</p>
+          <p>This technical data may include your IP address, request URL, referring page, browser user-agent header, and request timestamp. Cloudflare uses this information to deliver web traffic, protect against denial-of-service (DDoS) attacks, detect automated malicious traffic, and maintain edge network security. For further details on Cloudflare's infrastructure handling, see the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy ↗</a>.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>3. Theme Preferences &amp; Local Storage</h2>
+          <p>The site includes an interactive theme switch (Light/Dark mode) in the navigation header. When you click this toggle, your selected preference (<code>"light"</code> or <code>"dark"</code>) is saved directly in your web browser using the <code>localStorage</code> API under the key <code>jose-portfolio-theme</code>.</p>
+          <ul>
+            <li>This value is stored exclusively on your local device.</li>
+            <li>It is never transmitted to any external server, remote database, or third-party service.</li>
+            <li>It is used solely to maintain your preferred color scheme across page views and subsequent visits.</li>
+            <li>You can clear this value at any time via your browser's site settings or developer tools.</li>
+          </ul>
+        </section>
+
+        <section class="privacy-section">
+          <h2>4. Analytics &amp; Advertising Tracking</h2>
+          <p>This portfolio operates without intentionally enabled analytics platforms or advertising trackers. Specifically:</p>
+          <ul>
+            <li>No web analytics tools (such as Google Analytics or Cloudflare Web Analytics) are activated.</li>
+            <li>No advertising networks, retargeting scripts, or conversion pixels are embedded.</li>
+            <li>No behavioral tracking or cross-site user profiling is conducted.</li>
+          </ul>
+        </section>
+
+        <section class="privacy-section">
+          <h2>5. Cookies</h2>
+          <p>This site does not set any marketing, profiling, or tracking cookies. Our hosting provider (Cloudflare) may deploy essential security or routing cookies (such as security verification tokens) strictly as required to prevent malicious automated access and ensure reliable infrastructure operation.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>6. Voluntary Email Communications</h2>
+          <p>If you choose to contact me via the email links provided on the portfolio (<a href="mailto:joselmonte03@gmail.com">joselmonte03@gmail.com</a>), your email address, message contents, and any attachments you include are transmitted through standard email protocols directly to my personal inbox. This information is used solely to read and reply to your inquiry. It is never sold, rented, or added to automated mailing lists.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>7. External Links &amp; Third-Party Services</h2>
+          <p>This site contains external links to professional platforms and source code repositories, including LinkedIn (<a href="https://www.linkedin.com/in/jose-montejo-89888b257/" target="_blank" rel="noopener noreferrer">jose-montejo-89888b257 ↗</a>) and GitHub (<a href="https://github.com/JoseLM03" target="_blank" rel="noopener noreferrer">JoseLM03 ↗</a>). Clicking these external links directs your browser to third-party domains. Any data processed once you navigate to those services is governed entirely by their respective privacy policies and terms of service.</p>
+        </section>
+
+        <section class="privacy-section">
+          <h2>8. Questions &amp; Inquiries</h2>
+          <p>If you have any questions, concerns, or requests regarding this privacy notice or the technical operation of this website, you are welcome to contact me directly at <a href="mailto:joselmonte03@gmail.com">joselmonte03@gmail.com</a>.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="layout footer-layout">
+      <span>© 2026 Jose Luis Montejo.</span>
+      <span>Built with HTML, CSS &amp; JavaScript. No templates, no frameworks.</span>
+      <div class="footer-links">
+        <a class="footer-privacy-link" href="privacy.html" aria-current="page">Privacy</a>
+        <a href="index.html#home">Back to home ↑</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* DetailDesk Case Study — Extends Jose Portfolio V3 case study styling */
+@import "fieldwork.css";
+
+/* Private repository indicators and notes */
+.nav-private-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--subtext);
+  border: 1px solid var(--line);
+  padding: 5px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.private-repo-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 800;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--subtext);
+}
+.private-repo-note {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--subtext);
+  padding: 14px 18px;
+  background: var(--paper);
+  border-left: 3px solid var(--orange);
+  border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-top: 20px;
+}
+.private-repo-note strong {
+  color: var(--ink);
+}
+.team-credits-card {
+  margin-top: 24px;
+  padding: 18px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--orange);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--subtext);
+}
+.team-credits-card strong {
+  color: var(--ink);
+}

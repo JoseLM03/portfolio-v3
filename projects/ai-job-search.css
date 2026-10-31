@@ -1,0 +1,19 @@
+/* AI Job Search Case Study — Extends Jose Portfolio V3 case study styling */
+@import "fieldwork.css";
+
+/* Case study specific tweaks for public repository presentation */
+.release-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 48px;
+  padding: 12px 18px;
+  font-size: 13px;
+  font-weight: 800;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+}
+.release-pill span {
+  color: var(--orange);
+}

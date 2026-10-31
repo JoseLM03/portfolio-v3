@@ -1,0 +1,15 @@
+{
+  "name": "jose-montejo-portfolio",
+  "private": true,
+  "version": "3.0.0",
+  "description": "Personal portfolio website for Jose Luis Montejo",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
+}

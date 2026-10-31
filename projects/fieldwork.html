@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1b1a">
+  <meta name="description" content="Fieldwork: Jose Luis Montejo's AI product-research agent. A project case study covering tool calling, cited evidence, deterministic validation, FastAPI, and verification.">
+  <title>Fieldwork — Project Case Study | Jose Luis Montejo</title>
+  <meta name="portfolio-revision" content="fieldwork-dark-blocks-2026-10-23">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>
+    // Match the homepage: default to dark, unless this visitor explicitly chose light.
+    (() => {
+      let selected;
+      try { selected = localStorage.getItem('jose-portfolio-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = selected === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="fieldwork.css">
+  <script type="module" src="../theme.js"></script>
+</head>
+<body class="case-study-page">
+  <a class="skip-link" href="#main">Skip to case study</a>
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="layout header-layout">
+      <a class="identity" href="../index.html#home" aria-label="Jose Luis Montejo, back to homepage">
+        <span class="identity-mark">JM<span aria-hidden="true">.</span></span>
+        <span class="identity-name">Jose Luis Montejo<span class="identity-caption">SOFTWARE DEVELOPMENT</span></span>
+      </a>
+      <div class="header-actions">
+        <nav class="primary-nav" aria-label="Case study navigation">
+          <a href="../index.html#work">All work</a>
+          <a href="#overview">Overview</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#verification">Verification</a>
+          <a class="nav-external" href="https://github.com/JoseLM03/product-research-agent" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <span class="theme-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="layout case-breadcrumb"><a href="../index.html#work">← Selected work</a><span aria-hidden="true">/</span><span aria-current="page">Fieldwork</span></div>
+
+    <section class="case-hero layout" aria-labelledby="case-title">
+      <div class="case-hero-copy">
+        <div class="hero-kicker"><span class="kicker-square" aria-hidden="true"></span> INDEPENDENT PROJECT / CASE STUDY 01</div>
+        <h1 id="case-title">Fieldwork<span class="period">.</span></h1>
+        <p class="case-lead">Research with receipts.</p>
+        <p class="case-intro">An AI-assisted product research workspace that collects sources, calls tools, checks factual report content against exact source excerpts, and makes uncertainty visible.</p>
+        <div class="case-actions">
+          <a class="button button-primary" href="https://github.com/JoseLM03/product-research-agent" target="_blank" rel="noopener noreferrer">View source code <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="https://github.com/JoseLM03/product-research-agent/releases/tag/v1.0.1" target="_blank" rel="noopener noreferrer">V1.0.1 release <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <aside class="case-facts" aria-label="Project summary">
+        <div class="case-facts-label">PROJECT NOTES <span>01 / 04</span></div>
+        <dl>
+          <div><dt>Role</dt><dd>Independent developer</dd></div>
+          <div><dt>Release</dt><dd>V1.0.1 · September 2026</dd></div>
+          <div><dt>Focus</dt><dd>AI agents / backend / evidence validation</dd></div>
+          <div><dt>Stack</dt><dd>Python, FastAPI, React, TypeScript, SQL, Ollama, Tavily</dd></div>
+          <div><dt>Availability</dt><dd>Local application · not publicly deployed</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="case-stat-band" aria-label="Verification highlights">
+      <div class="layout case-stats">
+        <div><strong>138</strong><span>Backend tests passed</span></div>
+        <div><strong>9</strong><span>Frontend tests passed</span></div>
+        <div><strong>CI ✓</strong><span>GitHub Actions verification passed</span></div>
+        <p>Recorded September 27, 2026. <a href="https://github.com/JoseLM03/product-research-agent/blob/main/docs/VERIFICATION.md" target="_blank" rel="noopener noreferrer">See verification record ↗</a></p>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="overview" aria-labelledby="overview-title">
+      <div class="case-section-label"><span>01</span> / THE PROBLEM</div>
+      <div class="case-section-content">
+        <h2 id="overview-title">An AI answer isn't the same as evidence.</h2>
+        <p class="case-big-copy">Product research is useful only when you can trace conclusions back to their sources.</p>
+        <p>My goal was to build a research workflow that does more than generate a plausible-sounding report. It needed to collect real search results, preserve source references, handle failures honestly, and enforce boundaries on what the model could submit.</p>
+        <p>Fieldwork accepts a product idea and optional cost inputs, launches a research job, shows activity as it runs, and saves the resulting report with citations and limitations. The application is a <strong>research aid</strong>—not a source of independently verified market intelligence.</p>
+      </div>
+    </section>
+
+    <section class="case-section architecture-section" id="architecture" aria-labelledby="architecture-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>02</span> / HOW IT WORKS</div>
+        <div class="case-section-content">
+          <h2 id="architecture-title">One agent. Bounded tools. Verified references.</h2>
+          <p>The system keeps the model's decisions separate from the server's rules. The agent chooses from validated tools; the backend decides what evidence and calculations are accepted.</p>
+          <div class="arch-board" role="group" aria-label="Simplified Fieldwork architecture diagram. Browser sends requests to FastAPI. SQL stores jobs and activity. Worker runs a bounded Ollama agent using Tavily search and decimal calculations, then validates and saves a cited report.">
+            <div class="arch-board-heading"><span>SYSTEM MAP</span><span>SIMPLIFIED ARCHITECTURE, NOT A SCREENSHOT</span></div>
+            <div class="arch-lane">
+              <div class="arch-node arch-node-frontend"><small>01 / INTERFACE</small><strong>React workspace</strong><span>Submit idea · read activity · view reports</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>02 / API + STATE</small><strong>FastAPI + SQL</strong><span>Validate request · queue job · persist events</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>03 / EXECUTION</small><strong>Worker + Ollama agent</strong><span>Bounded tool-calling loop · timeouts</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-branch">
+                <div class="arch-node"><small>RESEARCH TOOL</small><strong>Tavily search</strong><span>Capture source IDs + excerpts</span></div>
+                <div class="arch-node"><small>CALCULATION TOOL</small><strong>Decimal math</strong><span>Compute from provided cost inputs</span></div>
+              </div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node arch-node-final"><small>04 / GUARDED OUTPUT</small><strong>Report validation</strong><span>Resolve exact excerpts · reject invalid claims · save report</span></div>
+            </div>
+            <p class="arch-board-note">Conceptual flow based on the repository architecture. Tool calls may repeat within configured limits.</p>
+          </div>
+          <div class="case-doc-link"><a class="project-text-link" href="https://github.com/JoseLM03/product-research-agent/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Read the full architecture documentation <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" aria-labelledby="decisions-title">
+      <div class="case-section-label"><span>03</span> / ENGINEERING</div>
+      <div class="case-section-content">
+        <h2 id="decisions-title">Decisions behind the build.</h2>
+        <div class="decision-grid">
+          <article><span class="decision-number">01</span><h3>Evidence comes from the server.</h3><p>The model selects source IDs and excerpts. Server-side code resolves exact quotes and rejects missing, mismatched, or duplicate references rather than trusting invented citations.</p></article>
+          <article><span class="decision-number">02</span><h3>Tool use has limits.</h3><p>Native Ollama calls are restricted to a validated tool registry, with bounds on turns, calls, request time, and recovery behavior.</p></article>
+          <article><span class="decision-number">03</span><h3>Research is a durable job.</h3><p>A SQL-backed queue tracks jobs and tool events, supports session-private history, and preserves explicit failed or partial states rather than silently losing errors.</p></article>
+          <article><span class="decision-number">04</span><h3>Numbers don't come from guesses.</h3><p>Optional contribution-margin calculations use Decimal arithmetic and only the original user-supplied cost scenario. Without enough inputs, the app explains the limitation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section verification-section" id="verification" aria-labelledby="verification-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>04</span> / VERIFICATION</div>
+        <div class="case-section-content">
+          <h2 id="verification-title">Tested locally. Limitations documented.</h2>
+          <p>V1 completed automated checks, local real-provider acceptance, and remote GitHub Actions verification. That includes backend behavior, frontend error states, report validation, and PostgreSQL migration checks in CI.</p>
+          <div class="verification-list">
+            <div><span class="verification-check" aria-hidden="true">✓</span><div><h3>Backend: 138 tests</h3><p>Validation, session boundaries, provider handling, persistence, queue limits, timeouts, and evidence contracts.</p></div></div>
+            <div><span class="verification-check" aria-hidden="true">✓</span><div><h3>Frontend: 9 tests</h3><p>Interface interactions, API client behavior, failure states, and build/typecheck/lint checks.</p></div></div>
+            <div><span class="verification-check" aria-hidden="true">✓</span><div><h3>Local acceptance + remote CI</h3><p>Ollama/Tavily acceptance with manual evidence review; GitHub Actions passed, including PostgreSQL migration checks.</p></div></div>
+          </div>
+          <aside class="limits-note">
+            <h3>What this does <em>not</em> prove</h3>
+            <p>Fieldwork is <strong>not publicly deployed</strong>. Production hosting, full browser/accessibility acceptance, load behavior, and penetration testing were not verified at this release. Exact citations establish provenance, <strong>not the truth of outside sources</strong>. The README and verification record disclose these limits.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" aria-labelledby="lessons-title">
+      <div class="case-section-label"><span>05</span> / TAKEAWAY</div>
+      <div class="case-section-content">
+        <h2 id="lessons-title">Good AI systems need ordinary engineering.</h2>
+        <p class="case-big-copy">The most valuable work wasn't just getting a model to answer. It was building validation, error handling, persistence, and tests around it.</p>
+        <p>Fieldwork helped me practice full-stack API boundaries, asynchronous job execution, external provider integration, schema design, and the distinction between a convincing model output and a verifiable system result.</p>
+        <div class="case-ending-links">
+          <a class="button button-primary" href="https://github.com/JoseLM03/product-research-agent" target="_blank" rel="noopener noreferrer">Explore the repository <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="https://github.com/JoseLM03/product-research-agent/blob/main/docs/VERIFICATION.md" target="_blank" rel="noopener noreferrer">See what passed <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Back to project list"><div class="layout case-next-inner"><a href="../index.html#work">← Back to all featured projects</a></div></nav>
+  </main>
+  <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript.</span><div class="footer-links"><a class="footer-privacy-link" href="../privacy.html">Privacy</a><a href="../index.html#home">Back to home ↑</a></div></div></footer>
+</body>
+</html>

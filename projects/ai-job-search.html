@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1b1a">
+  <meta name="description" content="AI Job Search: Jose Luis Montejo's Python job-discovery pipeline. A case study on Adzuna API integration, data normalization, dataclass domain models, role aliasing, and automated testing.">
+  <title>AI Job Search — Project Case Study | Jose Luis Montejo</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>
+    // Match the portfolio standard: default to dark, unless visitor explicitly chose light.
+    (() => {
+      let selected;
+      try { selected = localStorage.getItem('jose-portfolio-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = selected === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="ai-job-search.css">
+  <script type="module" src="../theme.js"></script>
+</head>
+<body class="case-study-page">
+  <a class="skip-link" href="#main">Skip to case study</a>
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="layout header-layout">
+      <a class="identity" href="../index.html#home" aria-label="Jose Luis Montejo, back to homepage">
+        <span class="identity-mark">JM<span aria-hidden="true">.</span></span>
+        <span class="identity-name">Jose Luis Montejo<span class="identity-caption">SOFTWARE DEVELOPMENT</span></span>
+      </a>
+      <div class="header-actions">
+        <nav class="primary-nav" aria-label="Case study navigation">
+          <a href="../index.html#work">All work</a>
+          <a href="#overview">Overview</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#decisions">Decisions</a>
+          <a href="#verification">Verification</a>
+          <a href="#roadmap">Roadmap</a>
+          <a class="nav-external" href="https://github.com/JoseLM03/ai-job-search" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <span class="theme-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="layout case-breadcrumb"><a href="../index.html#work">← Selected work</a><span aria-hidden="true">/</span><span aria-current="page">AI Job Search</span></div>
+
+    <section class="case-hero layout" aria-labelledby="case-title">
+      <div class="case-hero-copy">
+        <div class="hero-kicker"><span class="kicker-square" aria-hidden="true"></span> INDEPENDENT PYTHON PROJECT / V1.0.0 RELEASE</div>
+        <h1 id="case-title">AI Job Search<span class="period">.</span></h1>
+        <p class="case-lead">A structured Python pipeline for collecting, normalizing, and filtering software engineering listings.</p>
+        <p class="case-intro">Built to cut through noisy job boards, AI Job Search queries the Adzuna REST API, transforms raw, fragmented JSON payloads into strongly-typed dataclass models, and filters opportunities against custom preferences using role aliases and regex-based work arrangement detection.</p>
+        <div class="case-actions">
+          <a class="button button-primary" href="https://github.com/JoseLM03/ai-job-search" target="_blank" rel="noopener noreferrer">View source code <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="https://github.com/JoseLM03/ai-job-search/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">V1.0.0 release tag <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="#architecture">Architecture flow <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <aside class="case-facts" aria-label="Project summary">
+        <div class="case-facts-label">PROJECT NOTES <span>04 / 04</span></div>
+        <dl>
+          <div><dt>Role</dt><dd>Independent Developer</dd></div>
+          <div><dt>Release</dt><dd>V1.0.0 · September 2026</dd></div>
+          <div><dt>Timeline</dt><dd>Aug 2026 — Present (V1 Released)</dd></div>
+          <div><dt>Focus</dt><dd>API Ingestion, Data Normalization, Filtering</dd></div>
+          <div><dt>Stack</dt><dd>Python 3, Adzuna REST API, HTTPX, Dataclasses, Pytest, Git</dd></div>
+          <div><dt>Scope</dt><dd>Open-source CLI pipeline · Local execution</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="case-stat-band" aria-label="Verification highlights">
+      <div class="layout case-stats">
+        <div><strong>18 Verified Tests</strong><span>100% pytest pass rate</span></div>
+        <div><strong>4-Stage Pipeline</strong><span>Collect → Normalize → Filter → Report</span></div>
+        <div><strong>10 Role Aliases</strong><span>Software engineering expansions</span></div>
+        <p>Independent Python project verified locally with automated pytest test suites covering API fault tolerance, regex pattern extraction, role expansions, and preference filtering.</p>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="overview" aria-labelledby="overview-title">
+      <div class="case-section-label"><span>01</span> / THE PROBLEM</div>
+      <div class="case-section-content">
+        <h2 id="overview-title">Job boards bury relevant roles under noisy algorithms and fragmented data.</h2>
+        <p class="case-big-copy">Searching for software engineering positions across generalist job boards means sifting through hundreds of irrelevant postings, inaccurate location tags, and buried requirements.</p>
+        <p>General-purpose search algorithms on large job aggregators frequently return senior managerial roles, sales positions, or unrelated technical stacks when searching for entry-level or specialized developer roles. Furthermore, external job APIs return unpredictable payload structures: some omit salary fields, others nest location data three levels deep, and most bury remote/hybrid policies inside large blocks of unstructured text.</p>
+        <p>Without a disciplined collection and normalization pipeline, developers either miss opportunities due to minor title differences (e.g., "Python Developer" vs. "Backend Engineer") or waste hours manually parsing listings that don't match their work arrangement preferences.</p>
+        <p>AI Job Search solves this by establishing a deterministic four-stage data pipeline: querying external job boards via REST endpoints, mapping raw payloads to standardized <code>Job</code> dataclass models, expanding roles with semantic aliases, and filtering opportunities purely on clean, validated properties.</p>
+      </div>
+    </section>
+
+    <section class="case-section architecture-section" id="architecture" aria-labelledby="architecture-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>02</span> / ARCHITECTURE</div>
+        <div class="case-section-content">
+          <h2 id="architecture-title">Modular four-stage pipeline with strict separation of concerns.</h2>
+          <p>The application follows a linear, decoupled architecture where each stage has a single, well-defined responsibility. Network communication is isolated at the edge, data is normalized into structured domain models, and filtering operates purely on clean domain instances.</p>
+          <div class="arch-board" role="group" aria-label="Architecture diagram of the AI Job Search pipeline. Adzuna REST API feeds into the Collector Module, which passes raw JSON to the Normalizer Module. Clean Job models are evaluated by the Preference Filter against UserPreferences, producing relevant jobs.">
+            <div class="arch-board-heading"><span>PIPELINE MAP</span><span>4-STAGE MODULAR ARCHITECTURE</span></div>
+            <div class="arch-lane">
+              <div class="arch-node"><small>01 / EXTERNAL SOURCE</small><strong>Adzuna REST API</strong><span>HTTP GET queries with parameters for role, location, country, and results count</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>02 / INGESTION &amp; ERROR HANDLING</small><strong>Collector (src/collectors/adzuna.py)</strong><span>HTTPX client managing requests, timeouts, and JSON decode error recovery</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>03 / DATA NORMALIZATION</small><strong>Normalizer (src/normalizers/adzuna.py)</strong><span>Regex extraction for remote/hybrid/onsite tags and employment contract mapping</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>04 / STRUCTURED DOMAIN MODEL</small><strong>Job Dataclass (src/models/job.py)</strong><span>Immutable typed representation: ID, title, company, salary, location, arrangement</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>05 / PREFERENCE FILTERING</small><strong>Job Filter (src/filters/job_filter.py)</strong><span>Multi-criteria matching with role alias expansion and location/arrangement checks</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node arch-node-final"><small>06 / PIPELINE OUTPUT</small><strong>Pipeline Runner (run_pipeline.py)</strong><span>CLI output formatting structured summaries of relevant opportunities</span></div>
+            </div>
+            <p class="arch-board-note">Modular architecture of AI Job Search V1.0.0. All collection, normalization, and filtering operates locally via Python.</p>
+          </div>
+          <div class="case-doc-link">
+            <p><strong>Open-source repository:</strong> Source code, pipeline modules, and tests are public on <a href="https://github.com/JoseLM03/ai-job-search" target="_blank" rel="noopener noreferrer">GitHub (JoseLM03/ai-job-search) <span aria-hidden="true">↗</span></a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="decisions" aria-labelledby="decisions-title">
+      <div class="case-section-label"><span>03</span> / KEY DECISIONS</div>
+      <div class="case-section-content">
+        <h2 id="decisions-title">Design choices that keep the pipeline clean and extensible.</h2>
+        <p>V1 was architected with clean separation of concerns, ensuring that modifying data sources, expanding filter rules, or altering output formats does not require rewrites across the application.</p>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>Decoupled Normalization Layer</h3>
+            <p>Raw API payloads are never passed directly to filter functions. A dedicated normalizer transforms vendor-specific keys into a standardized <code>Job</code> dataclass. This guarantees that adding future job boards (such as Greenhouse, Lever, or LinkedIn) only requires a new normalizer function rather than alterations to downstream filtering logic.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>Role Alias Expansion Engine</h3>
+            <p>Job titles vary widely across companies. The <code>role_aliases.py</code> module maps broad target titles (e.g., "software engineer") to ten related industry titles, including "backend engineer", "full stack engineer", "python developer", and "site reliability engineer", significantly improving recall without requiring multiple manual queries.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Regex Work-Arrangement Extraction</h3>
+            <p>Because job boards rarely enforce structured remote/hybrid tags, <code>extract_work_arrangement</code> evaluates description text using targeted regular expressions (such as <code>hybrid|remote \d+ days (per|a) week</code>) to reliably categorize listings as remote, hybrid, or onsite.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Defensive Dataclass Modeling</h3>
+            <p>Domain models are declared using Python's <code>@dataclass</code> with explicit type hints and defensive field factories (e.g., <code>employment_types: list[str] = field(default_factory=list)</code>). This ensures strict schema validation and eliminates runtime <code>AttributeError</code> or mutable default bugs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section verification-section" id="verification" aria-labelledby="verification-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>04</span> / VERIFICATION</div>
+        <div class="case-section-content">
+          <h2 id="verification-title">18 verified automated tests with simulated failure handling.</h2>
+          <p>Because reliability is paramount when automating job searches, the codebase is backed by an automated <code>pytest</code> suite covering network failure resilience, regex extraction accuracy, role alias lookups, and preference permutations.</p>
+          <div class="verification-list">
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>API Network Fault Tolerance (1 test passed)</h3>
+                <p>Verifies <code>src/collectors/adzuna.py</code> under network failures. Using <code>monkeypatch</code> to simulate an <code>httpx.RequestError</code>, the test confirms that <code>get_jobs</code> gracefully catches the exception, logs an error, and returns an empty list (<code>[]</code>) without crashing the pipeline.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Data Normalization &amp; Regex Extraction (1 test passed)</h3>
+                <p>Verifies <code>src/normalizers/adzuna.py</code> field mapping and evaluates 9 distinct regex pattern test cases, confirming accurate classification of complex hybrid strings (e.g., "Remote 3 days per week", "2 days remote per week"), pure remote, onsite, and employment contract types.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Preference &amp; Role Alias Filtering Permutations (14 tests passed)</h3>
+                <p>Validates <code>src/filters/job_filter.py</code> across 14 scenarios: case-insensitive matching ("SOFTWARE DEVELOPER"), role alias lookup, remote/hybrid/onsite constraints, multiple employment types, and location matching versus rejection.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Pipeline Orchestration &amp; End-to-End Flow (2 tests passed)</h3>
+                <p>Tests <code>src/pipeline.py</code> end-to-end using mock API fixtures, verifying that <code>get_relevant_jobs</code> handles zero-result API responses and filters populated job batches down to exact matching listings.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="limits-note">
+            <h3>What V1 does <em>not</em> represent</h3>
+            <p><strong>No LLM integration:</strong> Despite the project name, V1 does <em>not</em> use an LLM (such as OpenAI, Gemini, or Claude). There is currently no automated résumé parsing, semantic embedding generation, or AI job scoring.</p>
+            <p><strong>Commute time calculation:</strong> While <code>max_commute_minutes</code> is declared on the <code>UserPreferences</code> dataclass as a future schema placeholder, actual transit or distance calculation is not implemented in V1 filtering logic (which requires an external geolocation API).</p>
+            <p><strong>CLI execution only:</strong> V1 is an independent Python command-line pipeline executed locally, not a deployed SaaS web dashboard, multi-tenant platform, or automated application bot.</p>
+            <p><strong>Separate from real-world workflow:</strong> This standalone software project is completely separate from my personal real-world job-search workflows using LLM assistants.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="case-section-label"><span>05</span> / ROADMAP</div>
+      <div class="case-section-content">
+        <h2 id="roadmap-title">Potential future directions and exploratory ideas.</h2>
+        <p class="case-big-copy">V1 established the data collection, normalization, and filtering baseline. Future exploration may investigate potential enhancements as non-committed research directions.</p>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>LLM-Assisted Job Fit Scoring (Potential Direction)</h3>
+            <p>Explore integrating Google Gemini API or local Ollama models with structured JSON schemas to evaluate candidate résumés against job descriptions and compute an objective alignment score with rationale.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>Geolocation &amp; Real Commute Calculation (Potential Exploration)</h3>
+            <p>Investigate connecting Google Maps Platform or OpenStreetMap distance matrix APIs to calculate real transit and driving times, activating the <code>max_commute_minutes</code> preference filter.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Multi-Source Collector Aggregation (Potential Direction)</h3>
+            <p>Explore adding ingestion modules for Greenhouse, Lever, and USAJOBS API feeds, routing raw listings through dedicated normalizers into the unified <code>Job</code> pipeline.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Persistent Storage &amp; Web Dashboard (Potential Concept)</h3>
+            <p>Consider storing collected listings in a local SQLite database, tracking application stages (Saved, Applied, Interviewing, Offer), and prototyping a lightweight React web UI.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" aria-labelledby="lessons-title">
+      <div class="case-section-label"><span>06</span> / TAKEAWAY</div>
+      <div class="case-section-content">
+        <h2 id="lessons-title">What building a production-style data pipeline taught me.</h2>
+        <p class="case-big-copy">Reliable software begins with disciplined data modeling and clean separation of concerns before adding complex features.</p>
+        <p>The most important design decision in AI Job Search was isolating external API payloads behind dedicated normalizer functions. By transforming messy, vendor-specific JSON dictionaries into immutable, strongly-typed <code>Job</code> dataclasses immediately upon ingestion, the filtering logic remained pure, testable, and completely independent of Adzuna's specific API schema.</p>
+        <p>Equally valuable was the discipline of incremental scoping: rather than attempting to build an all-in-one AI auto-apply tool, V1 focused strictly on building a reliable, fault-tolerant collection and filtering engine with 100% automated test coverage. This created a solid foundation that makes future integrations—like LLM scoring or database persistence—straightforward and clean.</p>
+        <div class="case-ending-links">
+          <a class="button button-primary" href="https://github.com/JoseLM03/ai-job-search" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="../index.html#work">Back to all featured projects <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Back to project list"><div class="layout case-next-inner"><a href="../index.html#work">← Back to all featured projects</a></div></nav>
+  </main>
+  <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript.</span><div class="footer-links"><a class="footer-privacy-link" href="../privacy.html">Privacy</a><a href="../index.html#home">Back to home ↑</a></div></div></footer>
+</body>
+</html>

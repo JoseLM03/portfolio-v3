@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.env
+.env.local
+.env.*.local
+.vite/
+REVISION_CHECK.txt
+assets/SWE Public Master Resume.pdf
+
+

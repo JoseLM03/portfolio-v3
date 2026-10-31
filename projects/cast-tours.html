@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1b1a">
+  <meta name="description" content="CAST Tours AI Chatbot: Jose Luis Montejo's case study on the publicly deployed bilingual travel assistant. Built with Python, FastAPI, deterministic privacy screening, trip-specific scoping, Groq inference, and WordPress integration for Da Silva International.">
+  <title>CAST Tours AI Chatbot — Project Case Study | Jose Luis Montejo</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>
+    // Match the portfolio standard: default to dark, unless visitor explicitly chose light.
+    (() => {
+      let selected;
+      try { selected = localStorage.getItem('jose-portfolio-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = selected === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="cast-tours.css">
+  <script type="module" src="../theme.js"></script>
+</head>
+<body class="case-study-page">
+  <a class="skip-link" href="#main">Skip to case study</a>
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="layout header-layout">
+      <a class="identity" href="../index.html#home" aria-label="Jose Luis Montejo, back to homepage">
+        <span class="identity-mark">JM<span aria-hidden="true">.</span></span>
+        <span class="identity-name">Jose Luis Montejo<span class="identity-caption">SOFTWARE DEVELOPMENT</span></span>
+      </a>
+      <div class="header-actions">
+        <nav class="primary-nav" aria-label="Case study navigation">
+          <a href="../index.html#work">All work</a>
+          <a href="#overview">Overview</a>
+          <a href="#showcase">Interface</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#decisions">Engineering</a>
+          <a href="#verification">Verification</a>
+          <span class="nav-private-badge">Private source repository</span>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <span class="theme-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="layout case-breadcrumb"><a href="../index.html#work">← Selected work</a><span aria-hidden="true">/</span><span aria-current="page">CAST Tours AI Chatbot</span></div>
+
+    <section class="case-hero layout" aria-labelledby="case-title">
+      <div class="case-hero-copy">
+        <div class="hero-kicker"><span class="kicker-square" aria-hidden="true"></span> INTERNSHIP PROJECT / CASE STUDY 02</div>
+        <h1 id="case-title">CAST Tours<span class="period">.</span></h1>
+        <p class="case-lead">Bilingual travel assistance with deterministic safety rails.</p>
+        <p class="case-intro">A specialized bilingual AI assistant publicly deployed in production for Da Silva International / CAST Tours. Engineered to answer traveler questions using curated tour documentation, strictly isolate tour itineraries, filter sensitive customer information before external AI processing, and safely escalate unverified requests to human coordinators.</p>
+        <div class="case-actions">
+          <span class="production-badge"><span class="status-pulse" aria-hidden="true"></span> Publicly deployed production chatbot</span>
+          <span class="private-repo-pill"><span class="lock-icon" aria-hidden="true">🔒</span> Private source repository</span>
+          <a class="simple-link" href="../index.html#experience">Internship details <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <aside class="case-facts" aria-label="Project summary">
+        <div class="case-facts-label">PROJECT NOTES <span>02 / 04</span></div>
+        <dl>
+          <div><dt>Role</dt><dd>AI Research Team Member (Intern)</dd></div>
+          <div><dt>Client</dt><dd>Da Silva International / CAST Tours</dd></div>
+          <div><dt>Timeline</dt><dd>Sep 2026 — Present</dd></div>
+          <div><dt>Focus</dt><dd>Privacy preflight / Scoped RAG / Guardrails</dd></div>
+          <div><dt>Stack</dt><dd>Python, FastAPI, Vanilla JS, Groq, pytest</dd></div>
+          <div><dt>Status</dt><dd>Publicly deployed production chatbot</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="case-stat-band" aria-label="Verification highlights">
+      <div class="layout case-stats">
+        <div><strong>Production</strong><span>Publicly deployed on WordPress</span></div>
+        <div><strong>50 Scenarios</strong><span>Defined synthetic acceptance suite</span></div>
+        <div><strong>Deterministic</strong><span>Preflight privacy &amp; claim validation</span></div>
+        <p>Publicly deployed production chatbot for Da Silva International / CAST Tours. Built with Python and FastAPI, powered by Groq inference, and evaluated across unit tests, regression suites, and 50 defined synthetic acceptance scenarios.</p>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="overview" aria-labelledby="overview-title">
+      <div class="case-section-label"><span>01</span> / THE PROBLEM</div>
+      <div class="case-section-content">
+        <h2 id="overview-title">Travelers need exact facts. Hallucinations break itineraries.</h2>
+        <p class="case-big-copy">In guided tour operations, a fabricated meeting time, wrong baggage allowance, or invented refund rule creates real disruption.</p>
+        <p>CAST Tours operates specialized international concert and culture tours across multiple destinations. Each trip carries unique inclusions, concert ticket policies, luggage limits, and schedules. When travelers ask questions, standard generative chatbots introduce two unacceptable risks:</p>
+        <p>First, an unconstrained model can easily blend details across different trips—answering a question about one itinerary with policies belonging to another. Second, travelers often paste personal booking numbers, passenger names, or payment inquiries into chat inputs, which must never be forwarded to third-party AI endpoints.</p>
+        <p>Furthermore, CAST Tours serves a diverse bilingual traveler base in English and Spanish across desktop and mobile devices. The goal was to build an assistant that behaves like an experienced travel coordinator: answers must be grounded strictly in approved documentation, customer data must be screened deterministically before external calls, and whenever an answer cannot be verified with certainty, the system must hand off cleanly to human staff.</p>
+      </div>
+    </section>
+
+    <section class="case-section showcase-section" id="showcase" aria-labelledby="showcase-title">
+      <div class="layout showcase-header">
+        <div class="case-section-label"><span>02</span> / INTERFACE</div>
+        <div class="case-section-content">
+          <h2 id="showcase-title">Production interface in action across languages and devices.</h2>
+          <p class="case-big-copy">Real traveler interactions captured from the publicly launched WordPress chatbot widget.</p>
+          <p>The chatbot is deployed directly on the CAST Tours website as a responsive floating widget, supporting both desktop and mobile viewports. Every interaction adheres to strict architectural boundaries: single-itinerary scoping, bilingual Spanish and English comprehension, and deterministic safe referral whenever documentation lacks verified certainty.</p>
+        </div>
+      </div>
+
+      <div class="gallery-breakout">
+        <div class="screenshot-grid">
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: The Fab Four trip information">
+                <img src="../assets/cast-tours/cast-tours-english-desktop.png" alt="English chatbot on desktop answering itinerary question for The Fab Four Greece trip with exact duration options" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>01 / Grounded Itinerary Retrieval</strong>
+              For the traveler inquiry <em>"How many days is the Fab Four Greece trip?"</em>, the system isolates approved tour documentation to return verified duration options (<em>"8 days / 7 nights; 5 days / 4 nights"</em>). Deterministic scoping prevents cross-itinerary contamination.
+            </figcaption>
+          </figure>
+
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: Marisela trip duration">
+                <img src="../assets/cast-tours/cast-tours-spanish-mobile.png.jpg" alt="Spanish chatbot on mobile viewport answering Marisela trip duration question with exact dates and night count" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>02 / Bilingual Mobile Assistance</strong>
+              Handling the Spanish query <em>"¿Cuánto dura el viaje de Marisela?"</em>, the chatbot detects language context and extracts exact dates (<em>"6 noches; 3–9 de junio de 2027"</em>) in fluent Spanish. The floating widget preserves touch ergonomics and localized UI controls on mobile viewports.
+            </figcaption>
+          </figure>
+
+          <figure class="screenshot-card">
+            <div class="screenshot-frame">
+              <button type="button" class="screenshot-trigger" aria-label="Open image zoom viewer: Unverified Amanda Miguel pricing">
+                <img src="../assets/cast-tours/cast-tours-safe-referral.png" alt="Chatbot response demonstrating safe staff referral for unverified Amanda Miguel trip pricing inquiry" loading="lazy">
+                <span class="screenshot-zoom-hint" aria-hidden="true"><span class="zoom-icon">⤢</span> Click to zoom</span>
+              </button>
+            </div>
+            <figcaption class="screenshot-caption">
+              <strong>03 / Safe Staff Referral</strong>
+              When a visitor asks for unverified pricing (<em>"How much does the Amanda Miguel trip cost?"</em>), response validation prevents speculative figures and deterministically triggers a <code>CAST TOURS · STAFF REFERRAL</code>. Unverified details escalate directly to human coordinators.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section architecture-section" id="architecture" aria-labelledby="architecture-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>03</span> / HOW IT WORKS</div>
+        <div class="case-section-content">
+          <h2 id="architecture-title">Deterministic boundaries. Scoped retrieval. Grounded answers.</h2>
+          <p>The architecture ensures external AI models never make policy decisions or access unscreened input. Deterministic Python services govern privacy screening, trip scoping, evidence retrieval, and output validation.</p>
+          <div class="arch-board" role="group" aria-label="Production CAST Tours AI Chatbot architecture diagram. WordPress iframe widget transmits traveler inquiries. Preflight screening filters sensitive customer data before external calls. Scoper isolates single-trip tour knowledge units. Lexical retrieval identifies approved itinerary evidence. Groq generates structured claims. Deterministic validator checks claims against retrieved documentation or escalates to human coordinators.">
+            <div class="arch-board-heading"><span>SYSTEM MAP</span><span>PUBLIC PRODUCTION ARCHITECTURE</span></div>
+            <div class="arch-lane">
+              <div class="arch-node"><small>01 / CLIENT &amp; INTERFACE</small><strong>WordPress Public Embed &amp; Vanilla JS Widget</strong><span>Responsive floating launcher · sandboxed iframe with allow-forms · in-memory session</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>02 / PRIVACY PREFLIGHT</small><strong>Deterministic Sensitive Data Screening</strong><span>Pre-retrieval regex filters screen customer identifiers, booking codes &amp; payment data</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>03 / SCOPING &amp; RETRIEVAL</small><strong>Trip-Specific Scoping &amp; Lexical Retrieval</strong><span>Isolates single itinerary · bilingual query handling · exact lexical matching against approved knowledge</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>04 / GROUNDED GENERATION</small><strong>Groq Inference — Public Production</strong><span>Sub-second generation · temperature 0 · strict JSON schema output &amp; evidence IDs</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>05 / SERVER-SIDE VALIDATION</small><strong>Deterministic Claim &amp; Evidence Validator</strong><span>Verifies citations against evidence · checks qualified language &amp; bounds</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node arch-node-final"><small>06 / GUARDED OUTPUT</small><strong>Grounded Answer or Safe Staff Escalation</strong><span>Deterministic fallback to human coordinators whenever unverified</span></div>
+            </div>
+            <p class="arch-board-note">Production architecture of the live CAST Tours chatbot. Preflight filters screen personal and payment details before generation, and retrieval is constrained to approved tour documentation.</p>
+          </div>
+          <div class="case-doc-link">
+            <p class="private-repo-note"><span aria-hidden="true">🔒</span> <strong>Private source repository:</strong> Source code, tour knowledge units, and production deployment configurations are maintained in a private repository for client confidentiality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="decisions" aria-labelledby="decisions-title">
+      <div class="case-section-label"><span>04</span> / ENGINEERING</div>
+      <div class="case-section-content">
+        <h2 id="decisions-title">Decisions behind the system.</h2>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>Preflight privacy screening before external calls.</h3>
+            <p>Customer questions pass through server-side regex screening before external AI generation endpoints are invoked. Booking numbers, payment terms, phone numbers, and email patterns trigger safe routing or sanitization, mitigating the risk of sensitive traveler details being transmitted to third-party APIs.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>Trip-specific scoping eliminates cross-talk.</h3>
+            <p>Travel inquiries are mapped to a single tour itinerary. The resolver matches questions exclusively to curated knowledge units for the active trip. Inquiries regarding retired or historical tour offerings are intercepted and referred to staff rather than generating speculative answers.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Bilingual lexical retrieval &amp; trip-scoped indexing.</h3>
+            <p>In public production, retrieved evidence is drawn directly from approved KnowledgeUnit documentation using deterministic lexical search. By indexing trip itineraries into discrete, verified units with bilingual Spanish and English keyword mapping, the system retrieves relevant clauses without introducing vector drift or semantic mismatch from third-party embedding models. Earlier offline development evaluated semantic embeddings for synthetic benchmarking, while the live release prioritizes verified lexical retrieval for predictable, auditable itinerary matching.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Groq low-latency inference with strict JSON schema.</h3>
+            <p>Production inference utilizes Groq acceleration to deliver sub-second response times without sacrificing deterministic schema conformance. Generation runs at temperature 0 constrained by strict Pydantic JSON schemas, ensuring that model outputs map claim strings directly to validated evidence IDs for server-side verification.</p>
+          </article>
+          <article>
+            <span class="decision-number">05</span>
+            <h3>Deterministic claim validation and staff escalation.</h3>
+            <p>The backend runs automated rule-based checks on cited source IDs, scans for qualified wording, and deterministically escalates to human coordinators whenever an answer cannot be grounded in approved knowledge units—providing a structured safeguard rather than relying on model self-policing.</p>
+          </article>
+          <article>
+            <span class="decision-number">06</span>
+            <h3>WordPress iframe sandbox &amp; form submission fix (Oct 31).</h3>
+            <p>During the October 31 production deployment onto the client's live WordPress website, the floating widget was embedded inside an isolated iframe with a browser <code>sandbox</code> policy. While <code>allow-scripts</code> and <code>allow-same-origin</code> were enabled, the initial policy omitted <code>allow-forms</code>. Because message dispatch and Enter key submission in the widget rely on form submission semantics, the omission silently prevented visitors from submitting queries. I diagnosed the sandbox restriction, updated the embed configuration to include <code>allow-forms</code>, authored automated regression tests for embed security headers, and verified seamless production operation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section verification-section" id="verification" aria-labelledby="verification-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>05</span> / VERIFICATION</div>
+        <div class="case-section-content">
+          <h2 id="verification-title">Tested against hallucinations, privacy leaks, and regressions.</h2>
+          <p>Because the assistant supports a real organization and public travelers, verification cannot rely on informal manual prompts. The system is continuously validated using comprehensive test suites.</p>
+          <div class="verification-list">
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Automated regression testing</h3>
+                <p>Unit and integration test suites covering deterministic scoping, lexical retrieval, language detection, and error fallbacks across core backend services.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Defined synthetic acceptance suite: 50 scenarios</h3>
+                <p>A structured suite of 50 synthetic acceptance scenarios designed to benchmark multi-turn privacy triggers, bilingual English/Spanish routing, boundary handling, and latency profiling without transmitting client data.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>WordPress iframe sandbox regression test (October 31)</h3>
+                <p>Automated tests verifying WordPress iframe embed configurations, ensuring sandbox security tokens (<code>allow-scripts allow-same-origin allow-forms</code>) are verified and prevent form-blocking regressions across mobile and desktop browsers.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Continuous regression and catalog retirement</h3>
+                <p>Regression tests verify that retired or historical tour offerings (such as the October 2026 retirement of past tour catalogs) remain strictly excluded from active customer suggestions and responses.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="limits-note">
+            <h3>Deployment scope &amp; limitations</h3>
+            <p>CAST Tours AI Chatbot is <strong>publicly deployed in production</strong> on the CAST Tours WordPress website to provide travelers with verified itinerary assistance. In accordance with portfolio verification standards, this case study does not make unsupported claims regarding traffic volume, sales conversions, uptime percentages, or revenue impact. Itinerary answers reflect curated, approved tour documents rather than unvetted live web searches, and any ungrounded query escalates deterministically to human coordinators.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" aria-labelledby="lessons-title">
+      <div class="case-section-label"><span>06</span> / TAKEAWAY</div>
+      <div class="case-section-content">
+        <h2 id="lessons-title">Building for real travelers taught me defensive engineering.</h2>
+        <p class="case-big-copy">Working directly with organization stakeholders and delivering a publicly deployed production tool showed me that knowing when not to answer is the most critical feature in practical enterprise AI.</p>
+        <p>Collaborating with leadership and staff at CAST Tours underscored that operational stakeholders care far more about reliability and predictability than model novelty. An answer that is 95% plausible but hallucinates a bus transfer time, ticket inclusion, or baggage surcharge destroys traveler trust immediately.</p>
+        <p>Taking the system from initial development to public production on WordPress required engineering rigor at every layer: from deterministic PII preflight screening and Groq low-latency inference to resolving real-world browser sandbox edge cases like the October 31 <code>allow-forms</code> fix. To support systematic evaluation, I built diagnostic timing middleware (<code>cast_tours.timing</code>) that records sub-millisecond durations across preflight filtering, lexical scoring, generation completion, and claim validation. This work reinforced how small, robust software foundations—clear interface contracts, strict schemas, automated regression tests, and defensive fallbacks—turn generative AI into a dependable business tool.</p>
+        <div class="case-ending-links">
+          <a class="button button-primary" href="../index.html#contact">Get in touch about this work <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="../index.html#experience">Read about my internship <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="fine-note" style="margin-top:14px">System architecture and technical engineering decisions can be discussed upon request.</p>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Back to project list"><div class="layout case-next-inner"><a href="../index.html#work">← Back to all featured projects</a></div></nav>
+  </main>
+  <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript.</span><div class="footer-links"><a class="footer-privacy-link" href="../privacy.html">Privacy</a><a href="../index.html#home">Back to home ↑</a></div></div></footer>
+
+  <!-- Interactive Image-Only Zoom Viewer (Product-image zoom experience) -->
+  <div class="image-viewer" id="image-viewer" aria-hidden="true" role="dialog" aria-label="Screenshot preview" tabindex="-1">
+    <div class="viewer-backdrop" id="viewer-backdrop"></div>
+    <div class="viewer-stage" id="viewer-stage">
+      <img id="viewer-image" class="viewer-image" src="" alt="" draggable="false">
+    </div>
+    <button type="button" class="viewer-sr-close" id="viewer-close" aria-label="Close image viewer">Close</button>
+  </div>
+
+  <script>
+    (() => {
+      const viewer = document.getElementById('image-viewer');
+      const stage = document.getElementById('viewer-stage');
+      const img = document.getElementById('viewer-image');
+      const backdrop = document.getElementById('viewer-backdrop');
+      if (!viewer || !stage || !img || !backdrop) return;
+
+      let isOpen = false;
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      let isDragging = false;
+      let startX = 0;
+      let startY = 0;
+      let startTx = 0;
+      let startTy = 0;
+      let previousActiveElement = null;
+
+      // Mobile touch pinch tracking
+      let touchStartDist = 0;
+      let touchStartScale = 1;
+
+      function updateTransform(useTransition = true) {
+        if (useTransition) {
+          img.classList.remove('is-dragging');
+        } else {
+          img.classList.add('is-dragging');
+        }
+        img.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+        if (scale > 1) {
+          img.classList.add('is-zoomed');
+        } else {
+          img.classList.remove('is-zoomed');
+        }
+      }
+
+      function clampPan() {
+        if (scale <= 1) {
+          translateX = 0;
+          translateY = 0;
+          return;
+        }
+        const maxPanX = (window.innerWidth * (scale - 0.85)) / 2;
+        const maxPanY = (window.innerHeight * (scale - 0.85)) / 2;
+        translateX = Math.min(Math.max(translateX, -maxPanX), maxPanX);
+        translateY = Math.min(Math.max(translateY, -maxPanY), maxPanY);
+      }
+
+      function resetZoom(useTransition = true) {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform(useTransition);
+      }
+
+      function openViewer(src, alt) {
+        previousActiveElement = document.activeElement;
+        img.src = src;
+        img.alt = alt || '';
+        resetZoom(false);
+        viewer.classList.add('is-open');
+        viewer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        isOpen = true;
+        viewer.focus();
+      }
+
+      function closeViewer() {
+        if (!isOpen) return;
+        viewer.classList.remove('is-open');
+        viewer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        resetZoom(false);
+        isOpen = false;
+        img.src = '';
+        if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+          previousActiveElement.focus();
+        }
+      }
+
+      // Triggers
+      document.querySelectorAll('.screenshot-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const sourceImg = trigger.querySelector('img');
+          if (sourceImg) {
+            openViewer(sourceImg.src, sourceImg.alt);
+          }
+        });
+      });
+
+      // Dismissal: Clicking outside the image closes viewer
+      backdrop.addEventListener('click', closeViewer);
+      stage.addEventListener('click', (e) => {
+        if (e.target === stage) {
+          closeViewer();
+        }
+      });
+
+      // Double-click to reset or zoom in
+      img.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        if (scale > 1) {
+          resetZoom(true);
+        } else {
+          const rect = img.getBoundingClientRect();
+          const clickX = e.clientX - (rect.left + rect.width / 2);
+          const clickY = e.clientY - (rect.top + rect.height / 2);
+          scale = 2.2;
+          translateX = -clickX * (scale - 1);
+          translateY = -clickY * (scale - 1);
+          clampPan();
+          updateTransform(true);
+        }
+      });
+
+      // Mouse wheel zoom following cursor position
+      stage.addEventListener('wheel', (e) => {
+        if (!isOpen) return;
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.25 : 0.8;
+        const newScale = Math.min(Math.max(1, scale * factor), 4.5);
+
+        if (newScale === 1) {
+          resetZoom(true);
+          return;
+        }
+
+        const mouseX = e.clientX - window.innerWidth / 2;
+        const mouseY = e.clientY - window.innerHeight / 2;
+
+        translateX -= (mouseX - translateX) * (newScale / scale - 1);
+        translateY -= (mouseY - translateY) * (newScale / scale - 1);
+        scale = newScale;
+
+        clampPan();
+        updateTransform(false);
+      }, { passive: false });
+
+      // Click-and-drag panning
+      img.addEventListener('mousedown', (e) => {
+        if (scale <= 1 || e.button !== 0) return;
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startTx = translateX;
+        startTy = translateY;
+        img.classList.add('is-dragging');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging || !isOpen) return;
+        translateX = startTx + (e.clientX - startX);
+        translateY = startTy + (e.clientY - startY);
+        clampPan();
+        updateTransform(false);
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          img.classList.remove('is-dragging');
+        }
+      });
+
+      // Mobile touch pinch-to-zoom & pan
+      stage.addEventListener('touchstart', (e) => {
+        if (!isOpen) return;
+        if (e.touches.length === 1 && scale > 1) {
+          isDragging = true;
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          startTx = translateX;
+          startTy = translateY;
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          const dx = e.touches[0].clientX - e.touches[1].clientX;
+          const dy = e.touches[0].clientY - e.touches[1].clientY;
+          touchStartDist = Math.hypot(dx, dy);
+          touchStartScale = scale;
+        }
+      }, { passive: true });
+
+      stage.addEventListener('touchmove', (e) => {
+        if (!isOpen) return;
+        if (e.touches.length === 1 && isDragging && scale > 1) {
+          translateX = startTx + (e.touches[0].clientX - startX);
+          translateY = startTy + (e.touches[0].clientY - startY);
+          clampPan();
+          updateTransform(false);
+        } else if (e.touches.length === 2 && touchStartDist > 0) {
+          const dx = e.touches[0].clientX - e.touches[1].clientX;
+          const dy = e.touches[0].clientY - e.touches[1].clientY;
+          const dist = Math.hypot(dx, dy);
+          const factor = dist / touchStartDist;
+          scale = Math.min(Math.max(1, touchStartScale * factor), 4.5);
+          clampPan();
+          updateTransform(false);
+        }
+      }, { passive: true });
+
+      stage.addEventListener('touchend', () => {
+        isDragging = false;
+        touchStartDist = 0;
+      }, { passive: true });
+
+      // Keyboard navigation & accessibility
+      window.addEventListener('keydown', (e) => {
+        if (!isOpen) return;
+        if (e.key === 'Escape') {
+          closeViewer();
+        } else if (e.key === '+' || e.key === '=') {
+          scale = Math.min(scale * 1.3, 4.5);
+          updateTransform(true);
+        } else if (e.key === '-' || e.key === '_') {
+          scale = Math.max(1, scale * 0.77);
+          if (scale === 1) resetZoom(true);
+          else updateTransform(true);
+        } else if (e.key === '0') {
+          resetZoom(true);
+        } else if (e.key === 'ArrowLeft') {
+          translateX += 40;
+          clampPan();
+          updateTransform(true);
+        } else if (e.key === 'ArrowRight') {
+          translateX -= 40;
+          clampPan();
+          updateTransform(true);
+        } else if (e.key === 'ArrowUp') {
+          translateY += 40;
+          clampPan();
+          updateTransform(true);
+        } else if (e.key === 'ArrowDown') {
+          translateY -= 40;
+          clampPan();
+          updateTransform(true);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

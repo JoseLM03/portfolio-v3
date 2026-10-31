@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1b1a">
+  <meta name="description" content="Jose Luis Montejo — software development portfolio featuring full-stack engineering, Python, practical AI systems, and team-built applications.">
+  <title>Jose Luis Montejo — Software Developer</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    // Dark is the default for everyone on first visit, regardless of device settings.
+    // A returning visitor's explicit light/dark choice takes precedence.
+    (() => {
+      let choice;
+      try { choice = localStorage.getItem('jose-portfolio-theme'); } catch (_) { /* private/file preview fallback */ }
+      document.documentElement.dataset.theme = choice === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <div class="layout header-layout">
+      <a class="identity" href="#home" aria-label="Jose Luis Montejo, return to homepage">
+        <span class="identity-mark">JM<span aria-hidden="true">.</span></span>
+        <span class="identity-name">Jose Luis Montejo<span class="identity-caption">SOFTWARE DEVELOPMENT</span></span>
+      </a>
+      <div class="header-actions">
+      <nav aria-label="Main navigation" class="primary-nav">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="/resume.html">Résumé</a>
+        <a class="nav-external" href="https://www.linkedin.com/in/jose-montejo-89888b257/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a class="nav-external" href="https://github.com/JoseLM03" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <span class="theme-icon" aria-hidden="true">☾</span><span class="theme-toggle-label">Dark mode</span>
+      </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero layout" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="hero-kicker"><span class="kicker-square" aria-hidden="true"></span> WELCOME TO MY PORTFOLIO</div>
+        <h1 id="hero-title">Hi, I'm Jose.<br>I build software<br>that works.</h1>
+        <p class="hero-description">I'm a software developer focused on practical problems: from full-stack web applications to Python automation and AI systems grounded in real evidence.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="/resume.html">Résumé <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="mailto:joselmonte03@gmail.com">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="simple-link hero-linkedin" href="https://www.linkedin.com/in/jose-montejo-89888b257/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-details" aria-label="Background">
+          <span>Lawrenceville, Georgia</span>
+          <span>B.S. Information Technology <em>·</em> Expected Dec 2026</span>
+          <span>English / Español</span>
+        </div>
+      </div>
+      <figure class="portrait-area">
+        <div class="portrait-mat">
+          <img src="assets/jose-portrait.jpg" width="1172" height="1172" alt="Portrait of Jose Luis Montejo" fetchpriority="high">
+        </div>
+        <figcaption><span>JOSE LUIS MONTEJO</span><span>SOFTWARE DEVELOPER · GEORGIA</span></figcaption>
+      </figure>
+    </section>
+
+    <div class="expertise-band" aria-label="Core technical skills">
+      <div class="layout expertise-inner"><span class="expertise-label">IN MY TOOLBOX</span><span>Python</span><span class="separator" aria-hidden="true">/</span><span>Java</span><span class="separator" aria-hidden="true">/</span><span>TypeScript</span><span class="separator" aria-hidden="true">/</span><span>React</span><span class="separator" aria-hidden="true">/</span><span>FastAPI</span><span class="separator" aria-hidden="true">/</span><span>SQL</span><span class="separator" aria-hidden="true">/</span><span>Git &amp; testing</span></div>
+    </div>
+
+    <section class="section work-section layout" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div class="section-eyebrow"><span>01</span> / SELECTED WORK</div>
+        <div class="heading-main"><h2 id="work-title">Things I've built.</h2><p>Four featured projects. Different challenges. The same focus on building, testing, and shipping software that does something useful.</p></div>
+      </div>
+
+      <div class="project-list">
+        <article class="project-row" aria-labelledby="fieldwork-title">
+          <div class="row-id"><span>01</span><span class="line" aria-hidden="true"></span></div>
+          <div class="row-content">
+            <div class="row-metadata">INDEPENDENT PROJECT / RELEASED V1.0.1</div>
+            <h3 id="fieldwork-title">Fieldwork<span class="period">.</span></h3>
+            <p>An AI product-research workspace that gathers sources, extracts cited excerpts, and deterministically validates claims against supporting evidence to reject unsupported claims and improve evidence traceability.</p>
+            <p class="stack"><strong>Built with</strong> Python · FastAPI · React · TypeScript · Ollama · SQL</p>
+          </div>
+          <div class="row-aside">
+            <div class="project-evidence">
+              <span class="aside-heading">WHAT IT SHOWS</span>
+              <span>AI agent architecture<br>Evidence validation<br>147 automated tests</span>
+            </div>
+            <div class="row-aside-links">
+              <a href="projects/fieldwork.html" class="project-text-link">Read the case study <span aria-hidden="true">→</span></a>
+              <a href="https://github.com/JoseLM03/product-research-agent" target="_blank" rel="noopener noreferrer" class="project-text-link">GitHub &amp; docs <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="project-row" aria-labelledby="cast-title">
+          <div class="row-id"><span>02</span><span class="line" aria-hidden="true"></span></div>
+          <div class="row-content">
+            <div class="row-metadata">INTERNSHIP / REAL ORGANIZATION</div>
+            <h3 id="cast-title">CAST Tours AI Chatbot</h3>
+            <p>A bilingual travel-assistance chatbot that retrieves approved itinerary information, strictly limits responses to the correct trip, and uses deterministic privacy and grounding safeguards.</p>
+            <p class="fine-note">Publicly deployed production chatbot integrated on WordPress for travelers.</p>
+            <p class="stack"><strong>Built with</strong> Python · FastAPI · Vanilla JS · Groq</p>
+          </div>
+          <div class="row-aside">
+            <div class="project-evidence">
+              <span class="aside-heading">WHAT IT SHOWS</span>
+              <span>Production deployment<br>Trip-scoped retrieval<br>Bilingual guardrails</span>
+            </div>
+            <div class="row-aside-links">
+              <a href="projects/cast-tours.html" class="project-text-link">Read the case study <span aria-hidden="true">→</span></a>
+              <a href="#experience" class="project-text-link">Internship details <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="project-row" aria-labelledby="detaildesk-title">
+          <div class="row-id"><span>03</span><span class="line" aria-hidden="true"></span></div>
+          <div class="row-content">
+            <div class="row-metadata">TEAM PROJECT / FULL STACK</div>
+            <h3 id="detaildesk-title">DetailDesk</h3>
+            <p>A service-business prototype with customer quote requests, photo uploads, and an owner dashboard. Contributed frontend improvements, testing, and collaborative GitHub pull-request workflows alongside teammates.</p>
+            <p class="stack"><strong>Built with</strong> React · Express · Node.js · SQLite · CSS</p>
+          </div>
+          <div class="row-aside">
+            <div class="project-evidence">
+              <span class="aside-heading">WHAT IT SHOWS</span>
+              <span>React &amp; Express<br>SQLite database<br>Git collaboration</span>
+            </div>
+            <div class="row-aside-links">
+              <a href="projects/detaildesk.html" class="project-text-link">Read the case study <span aria-hidden="true">→</span></a>
+              <span class="project-meta-label">Private source repository</span>
+            </div>
+          </div>
+        </article>
+        <article class="project-row" aria-labelledby="jobsearch-title">
+          <div class="row-id"><span>04</span><span class="line" aria-hidden="true"></span></div>
+          <div class="row-content">
+            <div class="row-metadata">INDEPENDENT PROJECT / V1.0.0 RELEASE</div>
+            <h3 id="jobsearch-title">AI Job Search</h3>
+            <p>A Python job-discovery and screening pipeline that normalizes listings into structured dataclass models and filters opportunities based on defined criteria. Backed by 18 verified automated tests.</p>
+            <p class="stack"><strong>Built with</strong> Python · Adzuna API · Dataclasses · Pytest · Git</p>
+          </div>
+          <div class="row-aside">
+            <div class="project-evidence">
+              <span class="aside-heading">WHAT IT SHOWS</span>
+              <span>Pipeline architecture<br>Data normalization<br>18 automated tests</span>
+            </div>
+            <div class="row-aside-links">
+              <a href="projects/ai-job-search.html" class="project-text-link">Read the case study <span aria-hidden="true">→</span></a>
+              <a href="https://github.com/JoseLM03/ai-job-search" target="_blank" rel="noopener noreferrer" class="project-text-link">GitHub repository <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="more-work"><span>ALSO BUILT</span><p><a href="https://github.com/JoseLM03/spanish-english-translator" target="_blank" rel="noopener noreferrer">Real-Time Translator <span aria-hidden="true">↗</span></a><span aria-hidden="true">·</span><a href="https://github.com/JoseLM03" target="_blank" rel="noopener noreferrer">Roblox Discord Alert Bot <span aria-hidden="true">↗</span></a><span aria-hidden="true">·</span><span>eFolio</span><span aria-hidden="true">·</span><span>Java / OOP projects</span><span aria-hidden="true">·</span><a href="https://github.com/JoseLM03?tab=repositories" target="_blank" rel="noopener noreferrer">All GitHub repositories <span aria-hidden="true">↗</span></a></p></div>
+    </section>
+
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="layout experience-layout">
+        <div class="section-eyebrow"><span>02</span> / EXPERIENCE</div>
+        <div class="experience-body">
+          <h2 id="experience-title">Beyond the classroom.</h2>
+          <div class="experience-entry"><div class="experience-name"><h3>AI Research Team Member</h3><p>Da Silva International / CAST Tours</p></div><span class="experience-date">SEP 2026 — PRESENT</span></div>
+          <p class="experience-description">I designed, implemented, and deployed a bilingual AI assistant for live travel itineraries. The work spans Python/FastAPI backend services, trip-scoped lexical retrieval, deterministic grounding checks, and automated regression testing—delivering reliable traveler assistance in production.</p>
+          <p class="fine-note">Project status: publicly deployed production chatbot.</p>
+          <div class="education-block">
+            <h3 class="education-label">EDUCATION</h3>
+            <div class="education-item">
+              <div class="education-topline"><strong>Georgia Gwinnett College</strong><span>2024 – 2026</span></div>
+              <p>Bachelor of Science in Information Technology · Software Development concentration</p>
+              <p class="education-secondary">Expected graduation: December 11, 2026 <span class="edu-divider" aria-hidden="true">·</span> GPA 3.83</p>
+            </div>
+            <div class="education-item">
+              <div class="education-topline"><strong>Georgia State University Perimeter College</strong><span>2021 – 2023</span></div>
+              <p>Associate of Science in Computer Science</p>
+              <p class="education-secondary">Graduated December 2023 <span class="edu-divider" aria-hidden="true">·</span> GPA 3.84</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section layout" id="about" aria-labelledby="about-title">
+      <div class="section-eyebrow"><span>03</span> / ABOUT ME</div>
+      <div class="about-body"><h2 id="about-title">A little about how I work.</h2><p class="about-intro">I like software you can actually use.</p><p>I'm based in Lawrenceville, Georgia, finishing my Software Development concentration at GGC. I enjoy taking an idea all the way from requirements to a working build: writing the code, debugging the rough edges, adding tests, and documenting what I learned.</p><p>I'm especially interested in backend and full-stack development, Python, and AI-enabled tools. The common thread is practical engineering—not using a technology just because it's trendy.</p><div class="skills-block"><h3>Some tools I use</h3><dl><div><dt>LANGUAGES</dt><dd>Python, Java, JavaScript, TypeScript, SQL</dd></div><div><dt>WEB &amp; BACKEND</dt><dd>React, Node.js, Express, FastAPI, REST APIs</dd></div><div><dt>DATA &amp; ENGINEERING</dt><dd>SQLite, MongoDB, Git, GitHub, automated tests</dd></div></dl></div></div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="layout contact-layout"><div class="section-eyebrow"><span>04</span> / GET IN TOUCH</div><div><h2 id="contact-title">Let's build something<br><span>useful.</span></h2><p>I'm interested in entry-level software engineering opportunities, especially backend, full-stack, and Python development.</p><div class="contact-actions"><a href="mailto:joselmonte03@gmail.com" class="button button-light">Email me <span aria-hidden="true">↗</span></a><a href="https://github.com/JoseLM03" target="_blank" rel="noopener noreferrer" class="contact-plain">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/jose-montejo-89888b257/" target="_blank" rel="noopener noreferrer" class="contact-plain">LinkedIn <span aria-hidden="true">↗</span></a></div></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript. No templates, no frameworks.</span><div class="footer-links"><a class="footer-privacy-link" href="privacy.html">Privacy</a><a href="#home">Back to home ↑</a></div></div></footer>
+</body>
+</html>

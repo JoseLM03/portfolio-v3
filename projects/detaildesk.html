@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1b1a">
+  <meta name="description" content="DetailDesk: Jose Luis Montejo's full-stack team case study. A web-based auto-detailing lead management prototype built with React, Vite, Express, Node.js, and SQLite.">
+  <title>DetailDesk — Project Case Study | Jose Luis Montejo</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>
+    // Match the portfolio standard: default to dark, unless visitor explicitly chose light.
+    (() => {
+      let selected;
+      try { selected = localStorage.getItem('jose-portfolio-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = selected === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="detaildesk.css">
+  <script type="module" src="../theme.js"></script>
+</head>
+<body class="case-study-page">
+  <a class="skip-link" href="#main">Skip to case study</a>
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="layout header-layout">
+      <a class="identity" href="../index.html#home" aria-label="Jose Luis Montejo, back to homepage">
+        <span class="identity-mark">JM<span aria-hidden="true">.</span></span>
+        <span class="identity-name">Jose Luis Montejo<span class="identity-caption">SOFTWARE DEVELOPMENT</span></span>
+      </a>
+      <div class="header-actions">
+        <nav class="primary-nav" aria-label="Case study navigation">
+          <a href="../index.html#work">All work</a>
+          <a href="#overview">Overview</a>
+          <a href="#contributions">Contributions</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#features">Features</a>
+          <a href="#verification">Verification</a>
+          <span class="nav-private-badge">Private source repository</span>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <span class="theme-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="layout case-breadcrumb"><a href="../index.html#work">← Selected work</a><span aria-hidden="true">/</span><span aria-current="page">DetailDesk</span></div>
+
+    <section class="case-hero layout" aria-labelledby="case-title">
+      <div class="case-hero-copy">
+        <div class="hero-kicker"><span class="kicker-square" aria-hidden="true"></span> COLLEGE TEAM PROJECT / ACTIVE PROTOTYPE</div>
+        <h1 id="case-title">DetailDesk<span class="period">.</span></h1>
+        <p class="case-lead">A web-based virtual receptionist and lead pipeline for auto detailers.</p>
+        <p class="case-intro">Developed as a collaborative college team project with classmates Quincy and Dominique, DetailDesk is an active working prototype designed to help independent auto detailers capture inquiries, prevent quoting mistakes, and manage customer leads through a real-time owner dashboard.</p>
+        <div class="case-actions">
+          <span class="private-repo-pill"><span class="lock-icon" aria-hidden="true">🔒</span> Private source repository</span>
+          <a class="simple-link" href="#contributions">My contributions <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <aside class="case-facts" aria-label="Project summary">
+        <div class="case-facts-label">PROJECT NOTES <span>03 / 04</span></div>
+        <dl>
+          <div><dt>Role</dt><dd>Full-Stack Developer (Team of 3)</dd></div>
+          <div><dt>Team</dt><dd>Jose Montejo, Quincy, Dominique</dd></div>
+          <div><dt>Timeline</dt><dd>Sep 2026 — Present (In Development)</dd></div>
+          <div><dt>Focus</dt><dd>Frontend UI, Form Validation, Bug Fixes, PR Reviews</dd></div>
+          <div><dt>Stack</dt><dd>React, Vite, Node.js, Express, SQLite, Vitest</dd></div>
+          <div><dt>Status</dt><dd>Active Working Prototype · Academic Project</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="case-stat-band" aria-label="Verification highlights">
+      <div class="layout case-stats">
+        <div><strong>Active Prototype</strong><span>College team project</span></div>
+        <div><strong>9 Verified Tests</strong><span>Vitest &amp; Node API suites</span></div>
+        <div><strong>Team Workflow</strong><span>Git branching &amp; PR reviews</span></div>
+        <p>Collaborative prototype developed with classmates Quincy and Dominique. Verified locally through automated test suites and component validation.</p>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="overview" aria-labelledby="overview-title">
+      <div class="case-section-label"><span>01</span> / THE PROBLEM</div>
+      <div class="case-section-content">
+        <h2 id="overview-title">Detailers lose revenue when they can't answer the phone.</h2>
+        <p class="case-big-copy">Independent auto detailers spend their workdays polishing paint and steam-cleaning interiors—meaning missed phone calls turn directly into lost customers.</p>
+        <p>Mobile detailers and solo shop owners are frequently unable to pick up phone calls or reply to repetitive text messages regarding pricing packages, service radiuses, and availability while actively working on vehicles. Potential customers often move on to competitors after an unanswered call.</p>
+        <p>Furthermore, when customers do reach out via text or social media, requests are frequently vague ("how much to clean my SUV?"). Without knowing vehicle condition (pet hair, deep carpet stains, exterior oxidation), detailers cannot accurately estimate time or cost, leading to awkward surprises upon arrival.</p>
+        <p>DetailDesk tackles this challenge with a two-part solution: an automated, business-grounded virtual receptionist that answers routine questions 24/7 without making up prices, paired with a structured vehicle quote intake engine that captures condition ratings and vehicle photos directly into an owner management dashboard.</p>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="contributions" aria-labelledby="contributions-title">
+      <div class="case-section-label"><span>02</span> / MY CONTRIBUTIONS</div>
+      <div class="case-section-content">
+        <h2 id="contributions-title">Frontend engineering, critical bug fixes, and testing.</h2>
+        <p>DetailDesk is a team effort. Quincy developed the initial prototype specifications, core server routes, and mobile receptionist layout; Dominique implemented mobile navigation headers and collaborated on reviews. My contributions centered on frontend architecture, input validation, bug fixes, visual styling, and pull request reviews.</p>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>Quote Form Bug Fixes &amp; Refactoring (PR #5)</h3>
+            <p>Resolved a critical timezone offset bug where <code>new Date().toISOString()</code> shifted evening appointment selections to next-day UTC dates by implementing a local date formatter. Fixed a photo re-upload failure by decoupling the hidden file input with React's <code>useRef</code>, ensuring file values properly reset on removal, validation failure, and resubmission.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>UI Personalization &amp; Design Polish (PR #14)</h3>
+            <p>Polished the visual identity across the customer request flow, virtual receptionist, and owner dashboard. Implemented custom CSS tokens, refined card layouts, and improved responsive ergonomics on tablet and mobile viewports.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Mobile Usability &amp; Header Layout (PR #3)</h3>
+            <p>Streamlined the quote request form for narrow phone screens, optimizing form control spacing, vehicle condition rating buttons, and progress headers to eliminate layout shifts on mobile devices.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Test Reviews &amp; Quality Assurance (PR #9 &amp; PR #13)</h3>
+            <p>Reviewed, refined, and merged automated Vitest component tests for the quote request form (validating image preview, non-image rejection, and input reset behavior) and verified Node.js API status transition tests.</p>
+          </article>
+        </div>
+        <div class="team-credits-card">
+          <strong>Team Collaboration:</strong> Initial prototype specifications and core server routes were authored by Quincy. Mobile navigation layout was contributed by Dominique. All features were coordinated across Git branches and reviewed collaboratively before merging.
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section architecture-section" id="architecture" aria-labelledby="architecture-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>03</span> / ARCHITECTURE</div>
+        <div class="case-section-content">
+          <h2 id="architecture-title">Decoupled full-stack architecture with zero-dependency SQLite.</h2>
+          <p>The system pairs a lightweight React client with an Express API backend, using Node's native SQLite module for frictionless local persistence without complex database setup.</p>
+          <div class="arch-board" role="group" aria-label="Simplified DetailDesk architecture diagram. React frontend communicates through a Vite proxy to an Express backend. Multer handles vehicle photo uploads. Data persists in a native SQLite database.">
+            <div class="arch-board-heading"><span>SYSTEM MAP</span><span>SIMPLIFIED ARCHITECTURE, NOT A SCREENSHOT</span></div>
+            <div class="arch-lane">
+              <div class="arch-node"><small>01 / CLIENT INTERFACE</small><strong>React 18 + Vite 5</strong><span>Quote Request Form · Virtual Receptionist · Owner Dashboard</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>02 / PROXY &amp; ROUTING</small><strong>Vite Development Proxy</strong><span>Transparently routes /api/* and /uploads/* to Express backend</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>03 / SERVER API</small><strong>Node.js + Express 4</strong><span>REST endpoints for quote submissions, lead workflow, and settings</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>04 / MULTIPART HANDLING</small><strong>Multer Storage Middleware</strong><span>Validates and stores vehicle photos locally with file type/size limits</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>05 / PERSISTENCE</small><strong>Native Node SQLite (node:sqlite)</strong><span>Zero external C++ build dependencies on Windows; synchronized transactions</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node arch-node-final"><small>06 / OWNER INTERFACE</small><strong>Lead Dashboard &amp; Settings</strong><span>Instant lead status transitions and live FAQ/pricing synchronization</span></div>
+            </div>
+            <p class="arch-board-note">Conceptual flow based on the repository architecture. All services run locally in a decoupled client-server setup.</p>
+          </div>
+          <div class="case-doc-link">
+            <p class="private-repo-note"><span aria-hidden="true">🔒</span> <strong>Private source repository:</strong> Source code and development branches are maintained in a private academic repository.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="features" aria-labelledby="features-title">
+      <div class="case-section-label"><span>04</span> / FEATURES</div>
+      <div class="case-section-content">
+        <h2 id="features-title">What works in the prototype today.</h2>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>Structured Quote &amp; Appointment Engine</h3>
+            <p>Customers enter contact details, vehicle specifications (year, make, model), preferred appointment date with local timezone validation, a 4-point condition rating (pet hair, stains, odor, paint condition), and an optional vehicle photo upload with instant preview and removal.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>Rule-Based Virtual Receptionist</h3>
+            <p>Provides 24/7 automated responses regarding detailing packages, starting prices, service radius, and common FAQs strictly based on SQLite business records. It enforces strict guardrails by refusing to invent custom discounts or quotes, directing customers to the quote form.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Owner Lead Management Dashboard</h3>
+            <p>Detailing shop owners can view incoming leads in real time, transition statuses (<code>New</code> → <code>Contacted</code> → <code>Booked</code> → <code>Closed</code>), inspect vehicle photos, search customer records, and filter by status or service package.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Live Business Profile &amp; Pricing Sync</h3>
+            <p>An owner settings editor allows updating business hours, service radius, packages, starting prices, and approved FAQs. Updates instantly synchronize with the receptionist's knowledge base without server restarts.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section verification-section" id="verification" aria-labelledby="verification-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>05</span> / VERIFICATION</div>
+        <div class="case-section-content">
+          <h2 id="verification-title">Tested components and verifiable results.</h2>
+          <p>Because DetailDesk is an active project, code quality and bug fixes were verified with automated test suites before merging pull requests.</p>
+          <div class="verification-list">
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Vitest component test suite (4 tests passed)</h3>
+                <p>Verifies <code>QuoteRequestForm</code> file input handling: accepts valid images (PNG/JPG/WebP), displays preview thumbnails, rejects non-image formats with error notices, and properly resets input values on photo removal.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Node.js backend API test suite (5 tests passed)</h3>
+                <p>Verifies <code>PATCH /api/leads/:id/status</code>: validates normal transitions (New → Contacted), later-stage transitions (Booked), rejects invalid status strings, checks missing payloads, and catches non-existent lead IDs.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Git branching &amp; peer review workflow</h3>
+                <p>Team development maintained via feature branches (<code>jose/*</code>, <code>quincy-*</code>, <code>dominique/*</code>), pull requests, and peer reviews before merging into the main branch.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="limits-note">
+            <h3>What this does <em>not</em> represent</h3>
+            <p>DetailDesk is an <strong>active academic prototype</strong>, not a deployed commercial SaaS platform. It has no paying customers, no active payment gateway, and no multi-tenant authentication. Vehicle photos are stored in local server storage rather than cloud object storage. The virtual receptionist currently uses deterministic keyword matching rather than an external LLM API.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="case-section-label"><span>06</span> / ROADMAP</div>
+      <div class="case-section-content">
+        <h2 id="roadmap-title">Active status and planned next steps.</h2>
+        <p class="case-big-copy">The prototype proves the core customer-to-owner workflow. Future development will focus on production integrations and cloud infrastructure.</p>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>Modular LLM Integration</h3>
+            <p>Upgrade the virtual receptionist from rule-based matching to a generative model (Gemini API or OpenAI) bounded by strict grounding prompts and system instructions to handle varied natural language questions.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>Two-Way SMS Notifications</h3>
+            <p>Integrate Twilio to automatically send text confirmations to customers when a quote is submitted and alert owners of new leads immediately while detailing vehicles.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Deposit &amp; Payment Processing</h3>
+            <p>Incorporate Stripe or Square to collect non-refundable booking deposits, reducing no-shows and securing scheduled detailing slots.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Cloud Storage &amp; Calendar Sync</h3>
+            <p>Migrate vehicle photo uploads from local server storage to cloud object storage (AWS S3 / Google Cloud Storage) and sync appointments with Google Calendar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" aria-labelledby="lessons-title">
+      <div class="case-section-label"><span>07</span> / TAKEAWAY</div>
+      <div class="case-section-content">
+        <h2 id="lessons-title">What I learned collaborating on a full-stack product.</h2>
+        <p class="case-big-copy">Building in a team environment highlighted the importance of clear branch hygiene, communicative PR reviews, and defensive frontend validation.</p>
+        <p>Working alongside Quincy and Dominique taught me how collaborative engineering differs from solo development. Agreeing on interface contracts between the React client and Express endpoints early prevented merge conflicts and duplicate work.</p>
+        <p>Solving specific bugs—like tracking down UTC timezone shifts in date inputs and managing unmounted DOM file inputs with React refs—reinforced the value of disciplined testing. Seeing teammate contributions merge smoothly into a unified prototype made this one of my most rewarding college software projects.</p>
+        <div class="case-ending-links">
+          <a class="button button-primary" href="../index.html#contact">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="../index.html#experience">View my background <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Back to project list"><div class="layout case-next-inner"><a href="../index.html#work">← Back to all featured projects</a></div></nav>
+  </main>
+  <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript.</span><div class="footer-links"><a class="footer-privacy-link" href="../privacy.html">Privacy</a><a href="../index.html#home">Back to home ↑</a></div></div></footer>
+</body>
+</html>
