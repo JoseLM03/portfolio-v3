@@ -12,6 +12,7 @@ export default defineConfig({
         fieldwork: resolve(import.meta.dirname, 'projects/fieldwork.html'),
         castTours: resolve(import.meta.dirname, 'projects/cast-tours.html'),
         detaildesk: resolve(import.meta.dirname, 'projects/detaildesk.html'),
+        efolio: resolve(import.meta.dirname, 'projects/efolio.html'),
         aiJobSearch: resolve(import.meta.dirname, 'projects/ai-job-search.html'),
       },
     },

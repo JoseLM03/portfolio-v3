@@ -16,23 +16,23 @@ Personal software engineering portfolio for Jose Luis Montejo, showcasing full-s
 
 The portfolio highlights four projects covering distinct engineering challenges:
 
-1. **[Fieldwork](projects/fieldwork.html)** — *AI Product-Research Workspace*
-   * An AI-assisted workspace that gathers web sources, extracts cited evidence, and validates report statements against exact excerpts to prevent hallucinations.
-   * **Stack:** Python, FastAPI, React, TypeScript, SQL, Ollama, Tavily.
-   * **Status & Verification:** Open-source local application (V1.0.1 release; not publicly deployed). Backed by 138 backend tests, 9 frontend tests, and passing GitHub Actions CI.
-   * **Source:** [GitHub Repository (JoseLM03/product-research-agent)](https://github.com/JoseLM03/product-research-agent)
-
-2. **[CAST Tours AI Chatbot](projects/cast-tours.html)** — *Production Bilingual Assistant*
+1. **[CAST Tours AI Chatbot](projects/cast-tours.html)** — *Production Bilingual Assistant*
    * A live, bilingual travel assistance chatbot deployed on WordPress that handles tourist inquiries across English and Spanish. Features preflight privacy filtering, deterministic trip scoping, and lexical retrieval over approved tour documentation.
    * **Stack:** Python, FastAPI, Vanilla JavaScript, Groq Low-Latency Inference.
    * **Status & Verification:** Publicly deployed in production for travelers. Includes verified resolution for an October 31 WordPress iframe sandbox restriction (`allow-forms`) with automated regression tests.
    * **Confidentiality:** Source code, tour knowledge units, and client configurations are maintained in a private repository.
 
-3. **[DetailDesk](projects/detaildesk.html)** — *Auto Detailing Virtual Receptionist & Lead Pipeline*
+2. **[DetailDesk](projects/detaildesk.html)** — *Auto Detailing Virtual Receptionist & Lead Pipeline*
    * A collaborative college project developed with classmates Quincy and Dominique. Features a customer-facing intake portal, condition ratings, photo uploads, and an owner management dashboard.
    * **My Contributions:** Frontend UI architecture, multi-step quote form validation, cross-browser styling, test coverage, and pull request reviews.
    * **Stack:** React, Vite, Node.js, Express, SQLite, Vitest.
    * **Status:** Active working prototype (academic project). Maintained in a private repository.
+
+3. **[eFolio](projects/efolio.html)** — *Academic Assessment Portfolio Platform*
+   * A multi-role academic assessment platform developed collaboratively at Georgia Gwinnett College connecting students, faculty, and administrators.
+   * **Stack:** React, Node.js, Express, MongoDB, REST APIs.
+   * **My Contributions:** Portfolio content reporting, API rate limiting, role-based endpoint restrictions, and notification preference controls through merged PR #76, along with peer reviews and integration.
+   * **Status & Privacy:** Academic capstone platform (not deployed in production). Maintained in a private institutional repository.
 
 4. **[AI Job Search](projects/ai-job-search.html)** — *Deterministic Job Aggregation Pipeline*
    * An open-source Python CLI pipeline that queries the Adzuna REST API, parses unstructured listings into strongly-typed dataclasses, expands titles via role aliases, and filters opportunities against user preferences.
@@ -97,4 +97,5 @@ Spins up a local web server to preview the generated `dist/` production output.
 
 * **Author:** Jose Luis Montejo ([@JoseLM03](https://github.com/JoseLM03))
 * **Collaborative Credits:** DetailDesk developed in collaboration with classmates Quincy and Dominique.
+* **Academic Capstone:** eFolio developed collaboratively as a senior academic capstone project at Georgia Gwinnett College.
 * **Client Work:** CAST Tours chatbot developed for Da Silva International / CAST Tours.

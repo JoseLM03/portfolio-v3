@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1c1b1a">
+  <meta name="description" content="eFolio: Academic assessment portfolio platform developed collaboratively at Georgia Gwinnett College with React, Node.js, Express, MongoDB, and REST APIs.">
+  <title>eFolio — Academic Capstone Case Study | Jose Luis Montejo</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script>
+    // Match the portfolio standard: default to dark, unless visitor explicitly chose light.
+    (() => {
+      let selected;
+      try { selected = localStorage.getItem('jose-portfolio-theme'); } catch (_) {}
+      document.documentElement.dataset.theme = selected === 'light' ? 'light' : 'dark';
+    })();
+  </script>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="efolio.css">
+  <script type="module" src="../theme.js"></script>
+</head>
+<body class="case-study-page">
+  <a class="skip-link" href="#main">Skip to case study</a>
+  <div class="top-rule" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="layout header-layout">
+      <a class="identity" href="../index.html#home" aria-label="Jose Luis Montejo, back to homepage">
+        <span class="identity-mark">JM<span aria-hidden="true">.</span></span>
+        <span class="identity-name">Jose Luis Montejo<span class="identity-caption">SOFTWARE DEVELOPMENT</span></span>
+      </a>
+      <div class="header-actions">
+        <nav class="primary-nav" aria-label="Case study navigation">
+          <a href="../index.html#work">All work</a>
+          <a href="#overview">Overview</a>
+          <a href="#contributions">Contributions</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#features">Features</a>
+          <a href="#verification">Verification</a>
+          <span class="nav-private-badge">Private source repository</span>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <span class="theme-icon" aria-hidden="true">☀</span><span class="theme-toggle-label">Light mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <div class="layout case-breadcrumb"><a href="../index.html#work">← Selected work</a><span aria-hidden="true">/</span><span aria-current="page">eFolio</span></div>
+
+    <section class="case-hero layout" aria-labelledby="case-title">
+      <div class="case-hero-copy">
+        <div class="hero-kicker"><span class="kicker-square" aria-hidden="true"></span> ACADEMIC CAPSTONE / CASE STUDY 03</div>
+        <h1 id="case-title">eFolio<span class="period">.</span></h1>
+        <p class="case-lead">An academic assessment portfolio platform connecting students, faculty, and administrators.</p>
+        <p class="case-intro">Developed collaboratively as a senior academic capstone project at Georgia Gwinnett College (GGC), eFolio streamlines student artifact submission, faculty rubric assessment, and institutional accreditation review. My verified contributions focused on portfolio content reporting, API rate limiting, role-based restrictions, and notification preference controls through merged PR #76, alongside team pull-request reviews.</p>
+        <div class="case-actions">
+          <span class="private-repo-pill"><span class="lock-icon" aria-hidden="true">🔒</span> Private source repository</span>
+          <a class="simple-link" href="#contributions">My contributions <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <aside class="case-facts" aria-label="Project summary">
+        <div class="case-facts-label">PROJECT NOTES <span>03 / 04</span></div>
+        <dl>
+          <div><dt>Role</dt><dd>Full-Stack Developer (Capstone Team)</dd></div>
+          <div><dt>Institution</dt><dd>Georgia Gwinnett College (GGC)</dd></div>
+          <div><dt>Timeline</dt><dd>Academic Capstone</dd></div>
+          <div><dt>Focus</dt><dd>Reporting, Rate Limiting, Role-Based Access</dd></div>
+          <div><dt>Stack</dt><dd>React, Node.js, Express, MongoDB, REST APIs</dd></div>
+          <div><dt>Status</dt><dd>Academic Capstone · Not Publicly Deployed</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="case-stat-band" aria-label="Verification highlights">
+      <div class="layout case-stats">
+        <div><strong>Academic Capstone</strong><span>GGC collaborative platform</span></div>
+        <div><strong>Merged PR #76</strong><span>Security, reporting &amp; controls</span></div>
+        <div><strong>Team Collaboration</strong><span>PR reviews &amp; branch integration</span></div>
+        <p>Collaborative academic assessment platform developed at Georgia Gwinnett College. Verified through manual REST API validation, feature branch reviews, and integrated pull requests.</p>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="overview" aria-labelledby="overview-title">
+      <div class="case-section-label"><span>01</span> / THE PROBLEM</div>
+      <div class="case-section-content">
+        <h2 id="overview-title">Academic assessment requires structured evidence, not scattered files.</h2>
+        <p class="case-big-copy">University degree programs require continuous tracking of student learning outcomes across semesters for accreditation, but evidence is often scattered across disparate tools.</p>
+        <p>Accreditation boards (such as ABET and SACSCOC) evaluate academic degree programs by assessing direct evidence of student learning. In practice, however, student coursework, evaluation rubrics, and faculty scoring frequently live in separate spreadsheets, email threads, and course folders. This fragmentation creates significant overhead when administrators need to aggregate program-wide outcome data.</p>
+        <p>Furthermore, an assessment system must accommodate distinct stakeholder responsibilities: students need a clean interface to curate work artifacts, faculty require clear rubrics to score competencies, and administrators need high-level reports across cohorts without exposing unauthorized evaluation records across classes.</p>
+        <p>eFolio addresses this by providing a unified, multi-role web platform: a central repository for student portfolio artifacts, structured evaluation workflows for faculty, and aggregated outcome reporting for institutional assessment.</p>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="contributions" aria-labelledby="contributions-title">
+      <div class="case-section-label"><span>02</span> / MY CONTRIBUTIONS</div>
+      <div class="case-section-content">
+        <h2 id="contributions-title">Backend reporting, API rate limiting, and access controls.</h2>
+        <p>eFolio was developed as a collaborative senior capstone project at Georgia Gwinnett College. My primary technical contributions were delivered through merged pull request #76, focusing on data reporting services, API hardening, role-based endpoint protection, and notification controls, supported by manual API testing and peer code reviews.</p>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>Portfolio Content Reporting (PR #76)</h3>
+            <p>Authored backend data extraction and aggregation queries to compile student portfolio content, submission timestamps, and evaluation statuses into structured reports. This enabled faculty and academic reviewers to audit student progress and institutional outcomes across course sections without manual compilation.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>API Rate Limiting &amp; Abuse Prevention (PR #76)</h3>
+            <p>Configured Express rate-limiting middleware to guard authentication endpoints and data-intensive reporting queries against burst traffic and brute-force enumeration. Established windowed request thresholds to ensure stable server operation during peak assessment deadlines.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Role-Based Endpoint Restrictions (PR #76)</h3>
+            <p>Enforced role-based access control (RBAC) across Express routing middleware, verifying user permissions so that students, faculty, and administrators access only their authorized views. Ensured that sensitive scoring rubrics and aggregate assessment data remain inaccessible to unauthorized client requests.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Notification Preference Controls (PR #76)</h3>
+            <p>Implemented configurable notification settings allowing users to control alert preferences for key portfolio events, such as milestone submissions and evaluation completion, reducing notification fatigue while keeping stakeholders informed.</p>
+          </article>
+        </div>
+        <div class="team-credits-card">
+          <strong>Team Collaboration &amp; Attribution:</strong> eFolio was built collaboratively with fellow GGC capstone classmates. All major features were coordinated across Git branches and integrated via pull-request reviews. Pull request #59 involved integrating a teammate's feature branch into the shared line; its underlying commits reflect collective team work rather than solo authorship. My verified individual engineering contributions are centered in merged PR #76.
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section architecture-section" id="architecture" aria-labelledby="architecture-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>03</span> / ARCHITECTURE</div>
+        <div class="case-section-content">
+          <h2 id="architecture-title">Multi-role full-stack architecture with REST endpoints and document storage.</h2>
+          <p>The system connects a dynamic React frontend to an Express REST API, enforcing role-based permissions and rate limiting before routing requests to MongoDB collections.</p>
+          <div class="arch-board" role="group" aria-label="Simplified eFolio architecture diagram. React frontend provides student, faculty, and admin dashboards. Requests pass through Express rate limiting and authentication middleware to portfolio and reporting controllers, persisting in MongoDB.">
+            <div class="arch-board-heading"><span>SYSTEM MAP</span><span>SIMPLIFIED ARCHITECTURE, NOT A SCREENSHOT</span></div>
+            <div class="arch-lane">
+              <div class="arch-node"><small>01 / CLIENT INTERFACE</small><strong>React Single-Page Application</strong><span>Role-specific dashboards for Students, Faculty, and Program Administrators</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>02 / SECURITY &amp; ROUTING</small><strong>Express Middleware Pipeline</strong><span>Request rate limiting (PR #76) · JWT authentication · Role-based access control</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>03 / SERVER API</small><strong>Node.js &amp; Express 4 REST API</strong><span>Portfolio CRUD · Assessment rubrics · Notification preferences (PR #76)</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node"><small>04 / REPORTING ENGINE</small><strong>Content Aggregation Service (PR #76)</strong><span>Compiles portfolio submissions and evaluation metrics for accreditation audits</span></div>
+              <div class="arch-arrow" aria-hidden="true">↓</div>
+              <div class="arch-node arch-node-final"><small>05 / PERSISTENCE</small><strong>MongoDB Document Collections</strong><span>Portfolios · Artifacts · Assessment Rubrics · User Roles · Notifications</span></div>
+            </div>
+            <p class="arch-board-note">Conceptual architecture based on the academic repository design. Services run in a decoupled client-server configuration.</p>
+          </div>
+          <div class="case-doc-link">
+            <p class="private-repo-note"><span aria-hidden="true">🔒</span> <strong>Private source repository:</strong> Source code, sprint history, and development branches are maintained in a private institutional repository (GGC-SD/efolio) for academic and organizational confidentiality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" id="features" aria-labelledby="features-title">
+      <div class="case-section-label"><span>04</span> / FEATURES</div>
+      <div class="case-section-content">
+        <h2 id="features-title">Core capabilities of the assessment platform.</h2>
+        <div class="decision-grid">
+          <article>
+            <span class="decision-number">01</span>
+            <h3>Student Artifact Management</h3>
+            <p>Students upload and organize learning artifacts (documents, presentations, project reflections) linked to specific courses, building a progressive portfolio demonstrating mastery of degree competencies.</p>
+          </article>
+          <article>
+            <span class="decision-number">02</span>
+            <h3>Faculty Rubric Assessment</h3>
+            <p>Instructors evaluate submitted artifacts against standardized departmental rubrics, recording criteria-specific scores and qualitative feedback directly into the platform.</p>
+          </article>
+          <article>
+            <span class="decision-number">03</span>
+            <h3>Aggregated Content Reporting</h3>
+            <p>Administrative dashboards query portfolio completion rates and rubric scores across cohorts, producing structured summaries for accreditation reviews without manual data wrangling.</p>
+          </article>
+          <article>
+            <span class="decision-number">04</span>
+            <h3>Defensive Endpoint Security</h3>
+            <p>Layered rate limiting and role verification prevent unauthorized access, protecting sensitive student grades and preventing server overload during end-of-semester submission peaks.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section verification-section" id="verification" aria-labelledby="verification-title">
+      <div class="layout case-section-grid">
+        <div class="case-section-label"><span>05</span> / VERIFICATION</div>
+        <div class="case-section-content">
+          <h2 id="verification-title">Tested endpoints and collaborative workflows.</h2>
+          <p>Because eFolio handles sensitive academic records across multiple roles, changes were verified through API testing and collaborative peer code review before branch merges.</p>
+          <div class="verification-list">
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Manual REST API testing (PR #76)</h3>
+                <p>Validated reporting queries, rate-limiter thresholds, and status codes (200, 400, 401, 403, 429) across reporting, notification, and authentication endpoints using API testing tools.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Role-based access validation</h3>
+                <p>Verified that unauthorized requests (e.g., student tokens attempting to trigger administrative reporting queries or faculty evaluation updates) were rejected with strict 403 Forbidden responses.</p>
+              </div>
+            </div>
+            <div>
+              <span class="verification-check" aria-hidden="true">✓</span>
+              <div>
+                <h3>Collaborative Git review &amp; integration</h3>
+                <p>Coordinated feature development through Git branches, pull requests, and peer reviews, validating branch compatibility before merging into the capstone repository.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="limits-note">
+            <h3>What this does <em>not</em> represent</h3>
+            <p>eFolio is an <strong>academic capstone platform</strong> developed for institutional assessment coursework, not a deployed commercial SaaS product. It is maintained in a private organization repository (GGC-SD/efolio), does not process payment transactions, and is not hosted on a public production domain.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section layout" aria-labelledby="lessons-title">
+      <div class="case-section-label"><span>06</span> / TAKEAWAY</div>
+      <div class="case-section-content">
+        <h2 id="lessons-title">What I learned collaborating on an enterprise-scale capstone.</h2>
+        <p class="case-big-copy">Working on a multi-role institutional platform emphasized the importance of defensive API design, role boundaries, and disciplined branch integration.</p>
+        <p>In an academic capstone, different team members build features concurrently. Coordinating shared Express routes and MongoDB collections required agreeing on clean API contracts early, ensuring that adding rate limiting or reporting queries didn't interfere with ongoing work.</p>
+        <p>Implementing security-focused features like rate limiting and role-based restrictions reinforced that authorization isn't just a frontend concern—every backend endpoint must independently defend its data boundaries. Contributing to eFolio gave me valuable experience building full-stack software that balances user needs with strict access controls.</p>
+        <div class="case-ending-links">
+          <a class="button button-primary" href="../index.html#contact">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="simple-link" href="../index.html#experience">View my background <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="case-next" aria-label="Back to project list"><div class="layout case-next-inner"><a href="../index.html#work">← Back to all featured projects</a></div></nav>
+  </main>
+  <footer class="site-footer"><div class="layout footer-layout"><span>© 2026 Jose Luis Montejo.</span><span>Built with HTML, CSS &amp; JavaScript.</span><div class="footer-links"><a class="footer-privacy-link" href="../privacy.html">Privacy</a><a href="../index.html#home">Back to home ↑</a></div></div></footer>
+</body>
+</html>
