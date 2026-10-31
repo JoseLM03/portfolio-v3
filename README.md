@@ -1,45 +1,99 @@
-# Jose Luis Montejo — Portfolio V3 + Fieldwork Case Study
+# Jose Luis Montejo — Software Engineering Portfolio (V3)
 
-Local-only review build. Nothing has been committed, pushed, or deployed.
+Personal software engineering portfolio for Jose Luis Montejo, showcasing full-stack web development, Python automation, and practical AI systems grounded in verified evidence.
 
-## Preview
+## Overview & Architecture
 
-Extract the ZIP, then open `index.html` in Chrome. Select **Fieldwork → Read the case study** to open `projects/fieldwork.html`. Both pages default to dark mode for first-time visitors; the light/dark toggle remembers an explicit preference when browser storage is enabled. Navigation from the case study links back to the homepage.
+* **Frontend:** Semantic HTML5, modern vanilla CSS (custom properties, responsive grid/flexbox), vanilla JavaScript.
+* **Build Tooling:** Vite (multi-page application architecture).
+* **Theme System:** Zero-dependency dark-first theme toggle with `localStorage` persistence and early `<head>` execution to prevent flash of unstyled content (FOUC).
+* **Privacy & Security:** Zero analytics, zero third-party tracking scripts, zero cookies, Content Security Policy, and automated security headers (`public/_headers`).
+* **Interactive Document Viewer:** Dedicated public résumé page (`resume.html`) featuring an embedded PDF viewer, accessible fallback controls, direct open, and clean file download capabilities.
 
-All visual assets are locally included. The site uses basic HTML, CSS, and a small vanilla JavaScript theme toggle, with no third-party scripts, frameworks, fonts, or analytics.
+---
 
-## This revision
+## Featured Case Studies
 
-- Preserved the approved V3 homepage design, content, dark-first theme, education, contacts, and four featured projects.
-- Linked the Fieldwork feature to a dedicated case study, with a separate link to its GitHub documentation.
-- Created `projects/fieldwork.html` and `projects/fieldwork.css` using matching responsive design and shared theme behavior.
-- Included an explicitly **simplified architecture diagram**, not a fabricated app screenshot or working demo.
-- Cross-checked product claims against the repository's README, architecture, security, release, and verification records.
-- Corrected the homepage shorthand from Next.js to React (the repository documents a React / Sites-generated Vinext/Vite frontend).
+The portfolio highlights four projects covering distinct engineering challenges:
 
-## Verification and limitations
+1. **[Fieldwork](projects/fieldwork.html)** — *AI Product-Research Workspace*
+   * An AI-assisted workspace that gathers web sources, extracts cited evidence, and validates report statements against exact excerpts to prevent hallucinations.
+   * **Stack:** Python, FastAPI, React, TypeScript, SQL, Ollama, Tavily.
+   * **Status & Verification:** Open-source local application (V1.0.1 release; not publicly deployed). Backed by 138 backend tests, 9 frontend tests, and passing GitHub Actions CI.
+   * **Source:** [GitHub Repository (JoseLM03/product-research-agent)](https://github.com/JoseLM03/product-research-agent)
 
-Fieldwork's V1.0.1 GitHub release is published; the actual app is **not publicly deployed**. Its Sept 27, 2026 verification record reports 138 backend tests, 9 frontend tests, manual local-provider acceptance, and passing GitHub Actions, including PostgreSQL migrations. These results are attributed to the project repository's verification record, not represented as fresh tests of Fieldwork in this portfolio build.
+2. **[CAST Tours AI Chatbot](projects/cast-tours.html)** — *Production Bilingual Assistant*
+   * A live, bilingual travel assistance chatbot deployed on WordPress that handles tourist inquiries across English and Spanish. Features preflight privacy filtering, deterministic trip scoping, and lexical retrieval over approved tour documentation.
+   * **Stack:** Python, FastAPI, Vanilla JavaScript, Groq Low-Latency Inference.
+   * **Status & Verification:** Publicly deployed in production for travelers. Includes verified resolution for an October 31 WordPress iframe sandbox restriction (`allow-forms`) with automated regression tests.
+   * **Confidentiality:** Source code, tour knowledge units, and client configurations are maintained in a private repository.
 
-Real Fieldwork application screenshots, other project case studies, a reviewed résumé PDF, and public deployment remain to be completed. Do not publicly upload the original GGC backup, academic transcript, or private CAST Tours data. Verify the public portrait and contact information with the owner before deployment.
+3. **[DetailDesk](projects/detaildesk.html)** — *Auto Detailing Virtual Receptionist & Lead Pipeline*
+   * A collaborative college project developed with classmates Quincy and Dominique. Features a customer-facing intake portal, condition ratings, photo uploads, and an owner management dashboard.
+   * **My Contributions:** Frontend UI architecture, multi-step quote form validation, cross-browser styling, test coverage, and pull request reviews.
+   * **Stack:** React, Vite, Node.js, Express, SQLite, Vitest.
+   * **Status:** Active working prototype (academic project). Maintained in a private repository.
 
-## References
+4. **[AI Job Search](projects/ai-job-search.html)** — *Deterministic Job Aggregation Pipeline*
+   * An open-source Python CLI pipeline that queries the Adzuna REST API, parses unstructured listings into strongly-typed dataclasses, expands titles via role aliases, and filters opportunities against user preferences.
+   * **Stack:** Python 3, Adzuna REST API, HTTPX, Dataclasses, Pytest.
+   * **Status & Verification:** Released open-source tool (V1.0.0). Backed by 18 automated pytest tests covering API resilience, pattern extraction, and preference logic.
+   * **Source:** [GitHub Repository (JoseLM03/ai-job-search)](https://github.com/JoseLM03/ai-job-search)
 
-- [Fieldwork README](https://github.com/JoseLM03/product-research-agent)
-- [Architecture](https://github.com/JoseLM03/product-research-agent/blob/main/docs/ARCHITECTURE.md)
-- [Claim alignment](https://github.com/JoseLM03/product-research-agent/blob/main/docs/CLAIM_ALIGNMENT.md)
-- [Verification](https://github.com/JoseLM03/product-research-agent/blob/main/docs/VERIFICATION.md)
-- [V1.0.1 release](https://github.com/JoseLM03/product-research-agent/releases/tag/v1.0.1)
+---
 
+## Public Résumé Integration
 
-## Layout hotfix (October 22, 2026)
-Fixed a nested-grid width regression in the Fieldwork architecture and verification sections. Both full-bleed sections now own their interior two-column layout instead of constraining it to the outer 205px label track. The full case-study page was visually inspected and measured at viewport widths 320, 390, 768, 1024, and 1440px in light and dark modes.
+* **Location:** [`resume.html`](resume.html) / [`assets/SWE_Public_Master_Resume.pdf`](assets/SWE_Public_Master_Resume.pdf)
+* **Privacy:** Excludes personal phone numbers; contains professional contact channels (email, LinkedIn, GitHub), Lawrenceville, GA location, and U.S. citizenship.
+* **Credentials:** Includes both Georgia Gwinnett College (B.S. in Information Technology, Software Development concentration; Expected Dec 2026) and Georgia State University Perimeter College (A.S. in Computer Science; Dec 2023).
 
-## October 23 patch: Fieldwork architecture/footer
+---
 
-- Every one of the six architecture boxes now has dark `#241b17` background.
-- The non-clickable `MORE WORK` label was removed; the useful return link remains.
-- Fieldwork CSS URL has a dated version parameter to prevent old cached styles.
-- `REVISION_CHECK.txt` has an exact build ID to distinguish this copy from an older extraction.
+## Local Development & Build
 
-**Important:** Extract this ZIP to an **entirely new, empty folder**; do not merge it with an older portfolio folder. The ZIP now contains `index.html` right at its top level. Open that `index.html` and click Fieldwork's case-study link. If you still see white nodes, check that Chrome's local file path points inside the new folder.
+This project requires **Node.js 20.19+ or 22.12+** and **npm**.
+
+### 1. Install Dependencies
+```bash
+npm ci
+```
+
+### 2. Start Development Server
+```bash
+npm run dev
+```
+Starts the Vite local development server with hot module reloading (HMR).
+
+### 3. Build for Production
+```bash
+npm run build
+```
+Compiles and bundles the multi-page static site into the `dist/` directory, including hashed assets, bundled stylesheets, and the copied `_headers` security configuration.
+
+### 4. Preview Production Build
+```bash
+npm run preview
+```
+Spins up a local web server to preview the generated `dist/` production output.
+
+---
+
+## Deployment Status
+
+* **Target Platform:** Cloudflare Pages Free
+* **Current Status:** **NOT DEPLOYED YET** (Repository published to GitHub; hosting deployment pending final configuration)
+* **Build Configuration:**
+  * Framework preset: `Vite` (or None)
+  * Build command: `npm run build`
+  * Build output directory: `dist`
+  * Environment variable: `NODE_VERSION: 20`
+  * Edge Security: Security headers and Content Security Policy are served via [`public/_headers`](public/_headers).
+
+---
+
+## Ownership & Attribution
+
+* **Author:** Jose Luis Montejo ([@JoseLM03](https://github.com/JoseLM03))
+* **Collaborative Credits:** DetailDesk developed in collaboration with classmates Quincy and Dominique.
+* **Client Work:** CAST Tours chatbot developed for Da Silva International / CAST Tours.
